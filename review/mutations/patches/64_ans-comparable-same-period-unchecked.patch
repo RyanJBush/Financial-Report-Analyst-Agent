@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -293,7 +293,7 @@
+         out.append("source_filing_mismatch")
+     if prior.period.type != "annual_duration" or current.period.type != "annual_duration":
+         out.append("period_not_annual")
+-    if prior.period.end == current.period.end:
++    if False:
+         out.append("same_period")
+     days = lambda f: (f.period.end - f.period.start).days + 1  # noqa: E731
+     if abs(days(prior) - days(current)) > PERIOD_LENGTH_TOLERANCE_DAYS:

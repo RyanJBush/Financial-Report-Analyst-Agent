@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -515,7 +515,7 @@
+     """The single usable fact for (metric, fiscal year), or the non-answer explaining why there is none."""
+     latest = book.latest_fiscal_year
+     label = f"FY{fy}"
+-    if latest is not None and fy > latest:
++    if False:
+         return None, _non_answer(q, book, "unresolved", "forecast_not_supported",
+                                  f"{label} ends after the selected filing's evidence (latest evidenced year FY{latest}); the historical "
+                                  "evidence does not establish it. No forecast is made.")

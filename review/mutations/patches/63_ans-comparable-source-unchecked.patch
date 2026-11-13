@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -289,7 +289,7 @@
+         out.append("accounting_basis_mismatch")
+     if prior.currency != current.currency:
+         out.append("currency_mismatch")
+-    if (prior.accession, prior.source_checksum) != (current.accession, current.source_checksum):
++    if False:
+         out.append("source_filing_mismatch")
+     if prior.period.type != "annual_duration" or current.period.type != "annual_duration":
+         out.append("period_not_annual")

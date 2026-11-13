@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -395,7 +395,7 @@
+         for name in EvidenceRef.model_fields:
+             if getattr(ref, name) != getattr(truth, name):
+                 out.append(f"evidence_field_differs_from_fact_table:{ref.evidence_id}:{name}")
+-    if expected is not None:
++    if False:
+         got = sorted((r.metric, r.period_label) for r in answer.evidence)
+         if got != sorted(expected):
+             out.append(f"cited_evidence_is_not_the_requested_metric_and_periods:{got}")

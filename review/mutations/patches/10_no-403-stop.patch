@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -262,7 +262,7 @@
+         except (urllib.error.URLError, OSError, TimeoutError) as err:
+             last_error = f"transport error: {err!r}"
+         else:
+-            if candidate.status in (403, 429):
++            if False:
+                 raise AccessDenied(
+                     f"HTTP {candidate.status} from {target.url}. Stopping; not retrying or working around it."
+                 )

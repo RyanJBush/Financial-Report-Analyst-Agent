@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -367,7 +367,7 @@
+         # a later header row with different years means the table holds more than one period block
+         for later in table.rows[ctx.header_row + 1:]:
+             other = _header_year_cells(later)
+-            if other is not None and [c.text for c in other] != [c.text for c in header_cells]:
++            if False:
+                 ctx.problems.append(("ambiguous_period_header",
+                                      f"table {table.index}: row {later.index} is a second, different period header"))
+                 break

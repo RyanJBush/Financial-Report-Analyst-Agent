@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -635,7 +635,7 @@
+                 issues.append(Issue(code="missing_basis_evidence", metric=spec.key, period_label=plabel,
+                                     message="no text establishing a GAAP basis of preparation"))
+                 continue
+-            if currency_conflict is not None:
++            if False:
+                 issues.append(Issue(code="currency_contradiction", metric=spec.key, period_label=plabel,
+                                     message=f"document states a non-USD reporting currency ({currency_conflict[1]}: {currency_conflict[0]!r}); only USD is supported"))
+                 continue

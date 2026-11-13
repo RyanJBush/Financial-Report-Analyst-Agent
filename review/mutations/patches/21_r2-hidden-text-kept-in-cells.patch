@@ -1,0 +1,11 @@
+--- a/src/finreport/parsing.py
++++ b/src/finreport/parsing.py
+@@ -70,7 +70,7 @@
+         if isinstance(child, NavigableString):
+             parts.append(str(child))
+         elif isinstance(child, Tag):
+-            if child.name in SKIP_TAGS or is_hidden(child):
++            if child.name in SKIP_TAGS:
+                 removed = True
+                 continue
+             if _AMBIGUOUS_STYLE_RE.search(_style(child)):

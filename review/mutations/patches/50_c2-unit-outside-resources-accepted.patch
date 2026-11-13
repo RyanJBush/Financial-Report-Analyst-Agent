@@ -1,0 +1,11 @@
+--- a/src/finreport/parsing.py
++++ b/src/finreport/parsing.py
+@@ -315,7 +315,7 @@
+             if attr.startswith("xmlns:"):
+                 doc.namespaces.setdefault(attr[len("xmlns:"):], set()).add(str(value))
+     index = 0
+-    for resources in soup.find_all("ix:resources"):
++    for resources in [soup]:
+         for unit in resources.find_all("xbrli:unit"):
+             doc.units.append(UnitDef(
+                 unit_id=unit.get("id"), index=index, element_id=unit.get("id"),

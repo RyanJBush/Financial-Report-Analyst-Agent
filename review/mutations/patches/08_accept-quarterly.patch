@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -359,7 +359,7 @@
+             ctx.period_sources.append((h, f"text block before table {table.index}"))
+     if ctx.header_row is None:
+         ctx.problems.append(("missing_period_evidence", f"table {table.index}: no year header row found"))
+-    elif nonannual:
++    elif False:
+         ctx.problems.append(("period_not_annual", f"table {table.index}: header describes a non-annual period: {header_text!r}"))
+     elif not annual:
+         ctx.problems.append(("missing_period_evidence", f"table {table.index}: no 'Year Ended' wording to establish an annual duration"))

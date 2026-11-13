@@ -1,0 +1,11 @@
+--- a/src/finreport/parsing.py
++++ b/src/finreport/parsing.py
+@@ -287,7 +287,7 @@
+                 continue
+             if not isinstance(child, Tag):
+                 continue
+-            if child.name in SKIP_TAGS or is_hidden(child):
++            if child.name in SKIP_TAGS:
+                 continue
+             style = _style(child)
+             if "page-break-before:always" in style or "break-before:page" in style:

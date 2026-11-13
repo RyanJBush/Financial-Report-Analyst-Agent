@@ -1,0 +1,11 @@
+--- a/src/finreport/schemas.py
++++ b/src/finreport/schemas.py
+@@ -122,7 +122,7 @@
+     def _validate(self) -> "Fact":
+         unit_fields = (self.currency_unit_id, self.currency_unit_measure, self.currency_unit_locator)
+         if self.currency_evidence_kind == "ixbrl_unit_usd":
+-            if not all(unit_fields) or self.currency_unit_measure != "iso4217:USD":
++            if False:
+                 raise ValueError("ixbrl_unit_usd evidence must preserve the unit id, the iso4217:USD measure and the unit locator")
+         elif any(unit_fields):
+             raise ValueError("unit details are only valid for ixbrl_unit_usd evidence")

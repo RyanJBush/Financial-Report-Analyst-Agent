@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -36,7 +36,7 @@
+ from finreport.schemas import Fact, FactTable, Locator, Strict
+ 
+ ANSWER_SCHEMA_VERSION = 1
+-PERCENT_PRECISION = 28
++PERCENT_PRECISION = 12
+ PERCENT_DISPLAY_PLACES = Decimal("0.01")
+ SCALE_NAMES = {1_000: "thousand", 1_000_000: "million", 1_000_000_000: "billion"}
+ PERIOD_LENGTH_TOLERANCE_DAYS = 7  # 52/53-week fiscal years differ by a week at most

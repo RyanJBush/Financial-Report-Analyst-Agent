@@ -1,0 +1,2436 @@
+{
+  "control": {
+    "dev": {
+      "exit": 0,
+      "summary": "548 passed in 3.60s",
+      "failed": [],
+      "imported_from": "/tmp/tmpohmyt_zp/control/finreport/__init__.py",
+      "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+    },
+    "regression": {
+      "exit": 0,
+      "summary": "5 passed in 0.19s",
+      "failed": [],
+      "imported_from": "/tmp/tmpohmyt_zp/control/finreport/__init__.py",
+      "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "name": "extract-all-years",
+      "file": "src/finreport/extract.py",
+      "intent": "Stop filtering columns to the target year and the prior year (third-year column leaks into facts).",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 2.71s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_extra_prior_year_column_is_ignored_and_not_reported",
+          "tests/dev/test_extraction.py::test_target_year_missing_from_table_is_reported_not_guessed",
+          "tests/dev/test_review_findings.py::test_r1_current_year_is_not_inferred_from_a_fixed_position"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m1/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "1 failed, 4 passed in 0.17s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h3_noise_tables.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m1/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_extra_prior_year_column_is_ignored_and_not_reported"
+    },
+    {
+      "id": 2,
+      "name": "position-not-header",
+      "file": "src/finreport/extract.py",
+      "intent": "Map amounts to year columns in the wrong order (position instead of header-driven).",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "80 failed, 468 passed in 3.67s",
+        "failed": [
+          "tests/dev/test_answers.py::test_build_calculation_records_every_step",
+          "tests/dev/test_answers.py::test_cli_exit_codes_follow_the_answer_status",
+          "tests/dev/test_answers.py::test_facts_in_different_scales_are_compared_on_normalized_amounts",
+          "tests/dev/test_answers.py::test_negative_prior_amount_withholds_the_percentage_with_the_right_reason",
+          "tests/dev/test_answers.py::test_positive_prior_with_negative_current_gives_a_negative_percentage",
+          "tests/dev/test_answers.py::test_zero_prior_amount_returns_the_absolute_change_and_withholds_the_percentage",
+          "tests/dev/test_c1_c2.py::test_c1_a_deleted_cached_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_same_size_altered_file_is_caught_by_the_checksum",
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_control_unchanged_cache_is_accepted_and_the_verification_is_recorded",
+          "tests/dev/test_c1_c2.py::test_c1_the_api_cannot_accept_without_a_source_verification",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[document-document_statement_usd]",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[header-statement_header_usd]",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[ixbrl-ixbrl_unit_usd]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_the_tagged_cells_with_a_usd_unit_produce_facts",
+          "tests/dev/test_extraction.py::test_columns_are_chosen_by_header_not_position",
+          "tests/dev/test_extraction.py::test_dash_amount_is_missing_not_zero",
+          "tests/dev/test_extraction.py::test_disagreeing_non_authoritative_occurrence_keeps_authoritative_value_and_flags_it",
+          "tests/dev/test_extraction.py::test_incompatible_primary_duplicates_emit_no_fact_and_surface_a_conflict",
+          "tests/dev/test_extraction.py::test_inline_xbrl_agreement_supplies_element_id",
+          "tests/dev/test_extraction.py::test_inline_xbrl_scale_mismatch_is_rejected",
+          "tests/dev/test_extraction.py::test_non_gaap_table_is_excluded",
+          "tests/dev/test_extraction.py::test_parenthesized_negative_is_signed",
+          "tests/dev/test_extraction.py::test_segment_table_is_excluded_as_a_legitimate_scope_difference",
+          "tests/dev/test_extraction.py::test_six_facts_with_complete_evidence",
+          "tests/dev/test_extraction.py::test_table_with_no_title_or_cues_is_excluded_as_unidentified",
+          "tests/dev/test_extraction.py::test_thousands_scale_is_applied",
+          "tests/dev/test_extraction.py::test_unidentified_table_is_excluded_not_used",
+          "tests/dev/test_review_findings.py::test_r1_current_year_is_not_inferred_from_a_fixed_position",
+          "tests/dev/test_review_findings.py::test_r1_period_label_and_years_in_one_row_yields_six_facts",
+          "tests/dev/test_review_findings.py::test_r1_reordered_years_in_mixed_header_map_by_header_not_position",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[(In",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[-years1]",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[Years",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_cell_keeps_its_position_so_locators_stay_stable",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_inline_xbrl_tag_is_not_used_for_checks",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_row_is_ignored_and_does_not_create_a_conflict",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<ix:hidden>9</ix:hidden>]",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span><b><i",
+          "tests/dev/test_review_findings.py::test_r2_the_same_markup_visible_is_counted",
+          "tests/dev/test_review_findings.py::test_r2_visible_inline_xbrl_text_is_preserved",
+          "tests/dev/test_review_findings.py::test_r2_white_text_in_an_amount_cell_is_flagged_not_trusted",
+          "tests/dev/test_review_findings.py::test_r3_deprecated_alias_is_only_a_diagnostic_and_sits_beside_the_acceptance_decision",
+          "tests/dev/test_review_findings.py::test_r3_right_numbers_wrong_filing_has_full_numeric_score_but_is_rejected",
+          "tests/dev/test_review_findings.py::test_r3_synthetic_microsoft_shaped_table_passes_every_machine_check_only_in_the_unit_fixture",
+          "tests/dev/test_review_findings.py::test_r3_wrong_evidence_id_and_non_gaap_basis_block_acceptance_but_not_the_numeric_diagnostic",
+          "tests/dev/test_review_findings.py::test_r4_a_non_blocking_issue_does_not_hide_a_missing_authoritative_fact",
+          "tests/dev/test_review_findings.py::test_r4_blocking_vs_non_blocking_issue_policy",
+          "tests/dev/test_review_findings.py::test_r4_evaluate_cli_exit_status_follows_acceptance_not_the_numeric_score",
+          "tests/dev/test_review_findings.py::test_r4_evaluate_cli_exits_nonzero_on_unresolved_conflict",
+          "tests/dev/test_review_findings.py::test_r4_unresolved_conflict_blocks_acceptance_even_with_a_full_numeric_score",
+          "tests/dev/test_review_findings.py::test_r6_a_parent_table_beside_the_consolidated_one_is_a_legitimate_scope_difference_not_a_conflict",
+          "tests/dev/test_review_findings.py::test_r8_an_invalid_sign_attribute_is_a_structured_issue",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[+6x]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[-3]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[0x6]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[13]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[1e3]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[25]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[3.5]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[6",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[999999999999999999999999]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[\\u0666]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[six]",
+          "tests/dev/test_review_findings.py::test_r8_the_reviewers_probe_a_non_numeric_scale_is_a_structured_issue_not_a_crash",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[+6]",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[06]",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[6]",
+          "tests/dev/test_review_findings.py::test_r8_valid_sign_and_scale_checks_are_preserved"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m2/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "5 failed in 0.18s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h1_titlecase_fulldates.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h2_december_thousands_loss.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h3_noise_tables.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h4_incompatible_ocf_duplicate.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h5_layout_variant.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m2/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_six_facts_with_complete_evidence"
+    },
+    {
+      "id": 3,
+      "name": "ignore-negative",
+      "file": "src/finreport/parsing.py",
+      "intent": "Drop the sign of parenthesized / minus-prefixed amounts.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "7 failed, 541 passed in 2.84s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_inline_xbrl_sign_must_agree_with_parentheses",
+          "tests/dev/test_extraction.py::test_parenthesized_negative_is_signed",
+          "tests/dev/test_parsing.py::test_parse_amount_accepts[$(1,234)-expected3]",
+          "tests/dev/test_parsing.py::test_parse_amount_accepts[(1,234)-expected2]",
+          "tests/dev/test_parsing.py::test_parse_amount_accepts[-1,234-expected4]",
+          "tests/dev/test_parsing.py::test_parse_amount_accepts[\\u22121,234-expected5]",
+          "tests/dev/test_review_findings.py::test_r8_valid_sign_and_scale_checks_are_preserved"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m3/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "3 failed, 2 passed in 0.14s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h1_titlecase_fulldates.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h2_december_thousands_loss.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h5_layout_variant.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m3/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_parenthesized_negative_is_signed"
+    },
+    {
+      "id": 4,
+      "name": "ignore-scale",
+      "file": "src/finreport/extract.py",
+      "intent": "Do not apply the scale multiplier when normalizing.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "182 failed, 366 passed in 2.98s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_52_53_week_year_is_comparable_to_a_52_week_year",
+          "tests/dev/test_answers.py::test_a_blocking_issue_for_the_metric_refuses_but_a_non_blocking_one_does_not",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[accounting_basis-IFRS]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[normalized_value-value1]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[period_label-FY2022]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[raw_amount_text-$901]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[reported_value-value0]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scale_multiplier-1000]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scope-segment]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[source_checksum-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee]",
+          "tests/dev/test_answers.py::test_a_fact_flagged_with_a_conflict_is_not_used",
+          "tests/dev/test_answers.py::test_a_fact_table_for_a_different_accession_than_the_manifest_is_unverified",
+          "tests/dev/test_answers.py::test_a_fact_whose_checksum_differs_from_the_table_is_flagged_by_the_book",
+          "tests/dev/test_answers.py::test_a_metric_with_no_facts_at_all_is_not_in_evidence_while_a_missing_year_is_a_different_reason",
+          "tests/dev/test_answers.py::test_a_non_consolidated_or_non_usd_fact_is_refused",
+          "tests/dev/test_answers.py::test_a_normalized_amount_inconsistent_with_reported_and_scale_is_refused",
+          "tests/dev/test_answers.py::test_a_percentage_cannot_accompany_a_non_positive_prior_amount",
+          "tests/dev/test_answers.py::test_a_period_not_marked_annual_is_refused_by_the_integrity_check",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update0-absolute_change_does_not_equal_current_minus_prior]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update1-percent_change_does_not_match_recomputation]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update2-percent_display_does_not_match_rounding_rule]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update3-percent_has_a_withheld_reason]",
+          "tests/dev/test_answers.py::test_a_tampered_locator_is_caught",
+          "tests/dev/test_answers.py::test_an_answer_that_fails_its_own_validators_is_never_returned",
+          "tests/dev/test_answers.py::test_an_unresolved_conflict_for_the_metric_and_period_refuses",
+          "tests/dev/test_answers.py::test_answers_do_not_change_when_the_expectations_file_is_wrong_or_missing",
+          "tests/dev/test_answers.py::test_build_calculation_records_every_step",
+          "tests/dev/test_answers.py::test_calculation_inputs_must_be_exactly_the_cited_evidence_and_values",
+          "tests/dev/test_answers.py::test_cli_ask_is_read_only",
+          "tests/dev/test_answers.py::test_cli_exit_codes_follow_the_answer_status",
+          "tests/dev/test_answers.py::test_cli_out_writes_the_same_json_as_stdout",
+          "tests/dev/test_answers.py::test_cli_refuses_when_the_cached_source_changed_after_extraction",
+          "tests/dev/test_answers.py::test_cli_without_a_manifest_refuses_to_answer_from_evidence",
+          "tests/dev/test_answers.py::test_comparable_facts_have_no_problems",
+          "tests/dev/test_answers.py::test_duplicate_evidence_references_are_reported",
+          "tests/dev/test_answers.py::test_end_to_end_incomparable_facts_are_refused_not_computed",
+          "tests/dev/test_answers.py::test_equal_amounts_are_no_change_and_zero_percent",
+          "tests/dev/test_answers.py::test_facts_from_two_different_filings_are_never_combined",
+          "tests/dev/test_answers.py::test_facts_in_different_scales_are_compared_on_normalized_amounts",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes0-metric_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes1-scope_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes2-accounting_basis_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes3-currency_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes4-source_filing_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes5-source_filing_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes6-same_period]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes7-period_not_annual]",
+          "tests/dev/test_answers.py::test_negative_prior_amount_withholds_the_percentage_with_the_right_reason",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[200-201-0.50%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-4-33.33%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-5-66.67%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-799--0.13%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-801-0.13%]",
+          "tests/dev/test_answers.py::test_period_length_must_be_comparable_even_if_both_are_marked_annual",
+          "tests/dev/test_answers.py::test_positive_prior_with_negative_current_gives_a_negative_percentage",
+          "tests/dev/test_answers.py::test_the_answer_value_must_match_its_calculation_and_cited_evidence",
+          "tests/dev/test_answers.py::test_the_cited_metric_and_years_must_be_the_ones_asked_for",
+          "tests/dev/test_answers.py::test_the_fact_scale_multiplier_must_be_a_supported_scale",
+          "tests/dev/test_answers.py::test_two_facts_for_the_same_metric_and_period_are_ambiguous_not_guessed",
+          "tests/dev/test_answers.py::test_unknown_evidence_ids_do_not_resolve",
+          "tests/dev/test_answers.py::test_unresolved_and_refused_answers_cannot_be_built_with_a_citation_or_a_value",
+          "tests/dev/test_answers.py::test_zero_prior_amount_returns_the_absolute_change_and_withholds_the_percentage",
+          "tests/dev/test_c1_c2.py::test_c1_a_deleted_cached_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_directory_in_place_of_the_cached_file_is_not_a_source",
+          "tests/dev/test_c1_c2.py::test_c1_a_manifest_checksum_edited_to_disagree_with_the_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_same_size_altered_file_is_caught_by_the_checksum",
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_control_unchanged_cache_is_accepted_and_the_verification_is_recorded",
+          "tests/dev/test_c1_c2.py::test_c1_the_api_cannot_accept_without_a_source_verification",
+          "tests/dev/test_c1_c2.py::test_c1_the_fact_table_checksum_is_compared_with_the_verified_file",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_byte_count_must_match_the_cached_file",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_filename_must_match_the_cached_file",
+          "tests/dev/test_c1_c2.py::test_c2_a_unit_based_fact_must_carry_its_unit_details",
+          "tests/dev/test_c1_c2.py::test_c2_a_usd_header_does_not_override_a_non_usd_unit_on_the_amount",
+          "tests/dev/test_c1_c2.py::test_c2_debt_denomination_in_another_currency_is_not_a_conflict_about_the_statements_currency",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[document-document_statement_usd]",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[header-statement_header_usd]",
+          "tests/dev/test_c1_c2.py::test_c2_evaluate_accepts_each_governing_kind_end_to_end_and_reports_it[ixbrl-ixbrl_unit_usd]",
+          "tests/dev/test_c1_c2.py::test_c2_header_evidence_takes_precedence_over_a_document_statement",
+          "tests/dev/test_c1_c2.py::test_c2_subsidiary_functional_currency_in_another_currency_is_not_a_conflict_either",
+          "tests/dev/test_c1_c2.py::test_c2a_a_usd_heading_above_the_statement_is_accepted",
+          "tests/dev/test_c1_c2.py::test_c2a_an_explicit_usd_statement_in_the_scale_line_is_accepted[(Amounts",
+          "tests/dev/test_c1_c2.py::test_c2a_an_explicit_usd_statement_in_the_scale_line_is_accepted[(In",
+          "tests/dev/test_c1_c2.py::test_c2a_an_explicit_usd_statement_in_the_scale_line_is_accepted[(U.S.",
+          "tests/dev/test_c1_c2.py::test_c2a_an_explicit_usd_statement_in_the_scale_line_is_accepted[(USD",
+          "tests/dev/test_c1_c2.py::test_c2a_header_evidence_binds_to_its_own_table_only",
+          "tests/dev/test_c1_c2.py::test_c2b_a_document_statement_governing_the_statements_is_accepted[Our",
+          "tests/dev/test_c1_c2.py::test_c2b_a_document_statement_governing_the_statements_is_accepted[The",
+          "tests/dev/test_c1_c2.py::test_c2b_a_document_statement_governing_the_statements_is_accepted[We",
+          "tests/dev/test_c1_c2.py::test_c2b_a_document_statement_governing_the_statements_is_accepted[sentence6]",
+          "tests/dev/test_c1_c2.py::test_c2b_the_governing_sentence_among_commentary_is_what_gets_cited",
+          "tests/dev/test_c1_c2.py::test_c2c_commentary_does_not_replace_the_fallback",
+          "tests/dev/test_c1_c2.py::test_c2c_each_amount_uses_its_own_unit_reference",
+          "tests/dev/test_c1_c2.py::test_c2c_it_is_only_a_fallback_header_or_document_evidence_wins",
+          "tests/dev/test_c1_c2.py::test_c2c_only_the_tagged_cells_with_a_usd_unit_produce_facts",
+          "tests/dev/test_c1_c2.py::test_c2c_the_amounts_own_unit_resolving_to_iso4217_usd_is_accepted_and_fully_preserved",
+          "tests/dev/test_cli_and_evaluation.py::test_extract_and_evaluate_roundtrip_on_synthetic_cache",
+          "tests/dev/test_extraction.py::test_columns_are_chosen_by_header_not_position",
+          "tests/dev/test_extraction.py::test_dash_amount_is_missing_not_zero",
+          "tests/dev/test_extraction.py::test_disagreeing_non_authoritative_occurrence_keeps_authoritative_value_and_flags_it",
+          "tests/dev/test_extraction.py::test_element_id_is_attached_when_present",
+          "tests/dev/test_extraction.py::test_extra_prior_year_column_is_ignored_and_not_reported",
+          "tests/dev/test_extraction.py::test_incompatible_primary_duplicates_emit_no_fact_and_surface_a_conflict",
+          "tests/dev/test_extraction.py::test_inline_xbrl_agreement_supplies_element_id",
+          "tests/dev/test_extraction.py::test_matching_duplicate_primary_statements_are_corroboration_not_conflict",
+          "tests/dev/test_extraction.py::test_matching_net_income_duplicates_are_preserved_as_corroboration",
+          "tests/dev/test_extraction.py::test_non_gaap_table_is_excluded",
+          "tests/dev/test_extraction.py::test_parenthesized_negative_is_signed",
+          "tests/dev/test_extraction.py::test_segment_table_is_excluded_as_a_legitimate_scope_difference",
+          "tests/dev/test_extraction.py::test_six_facts_with_complete_evidence",
+          "tests/dev/test_extraction.py::test_table_with_no_title_or_cues_is_excluded_as_unidentified",
+          "tests/dev/test_extraction.py::test_thousands_scale_is_applied",
+          "tests/dev/test_extraction.py::test_thousands_vs_millions_between_authoritative_tables_is_an_unresolved_conflict",
+          "tests/dev/test_extraction.py::test_unidentified_table_is_excluded_not_used",
+          "tests/dev/test_narrative.py::test_amounts_in_thousands_must_be_stated_in_thousands",
+          "tests/dev/test_narrative.py::test_decrease_to_negative_is_a_decrease_with_the_right_amounts",
+          "tests/dev/test_narrative.py::test_negative_amount_without_sign_or_word_is_rejected",
+          "tests/dev/test_narrative.py::test_negative_current_amount_lookup_says_negative",
+          "tests/dev/test_narrative.py::test_negative_prior_has_no_percentage",
+          "tests/dev/test_narrative.py::test_synthetic_baseline_has_the_expected_shape",
+          "tests/dev/test_narrative.py::test_zero_change_is_unchanged_not_an_increase",
+          "tests/dev/test_narrative.py::test_zero_prior_has_no_percentage_and_scripted_says_why",
+          "tests/dev/test_narrative.py::test_zero_prior_model_inventing_a_percentage_is_rejected",
+          "tests/dev/test_offline_import.py::test_cli_import_then_extract_end_to_end",
+          "tests/dev/test_review_findings.py::test_evaluator_rejects_malformed_tables_instead_of_crashing[<lambda>0]",
+          "tests/dev/test_review_findings.py::test_evaluator_rejects_malformed_tables_instead_of_crashing[<lambda>1]",
+          "tests/dev/test_review_findings.py::test_evaluator_rejects_malformed_tables_instead_of_crashing[<lambda>3]",
+          "tests/dev/test_review_findings.py::test_r1_a_repeated_identical_header_is_not_ambiguous",
+          "tests/dev/test_review_findings.py::test_r1_current_year_is_not_inferred_from_a_fixed_position",
+          "tests/dev/test_review_findings.py::test_r1_period_label_and_years_in_one_row_yields_six_facts",
+          "tests/dev/test_review_findings.py::test_r1_reordered_years_in_mixed_header_map_by_header_not_position",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[(In",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[-years1]",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[Years",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_cell_keeps_its_position_so_locators_stay_stable",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_inline_xbrl_tag_is_not_used_for_checks",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_row_is_ignored_and_does_not_create_a_conflict",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<ix:hidden>9</ix:hidden>]",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span><b><i",
+          "tests/dev/test_review_findings.py::test_r2_the_same_markup_visible_is_counted",
+          "tests/dev/test_review_findings.py::test_r2_visible_inline_xbrl_text_is_preserved",
+          "tests/dev/test_review_findings.py::test_r2_white_text_in_an_amount_cell_is_flagged_not_trusted",
+          "tests/dev/test_review_findings.py::test_r3_deprecated_alias_is_only_a_diagnostic_and_sits_beside_the_acceptance_decision",
+          "tests/dev/test_review_findings.py::test_r3_duplicate_and_missing_facts_are_rejected",
+          "tests/dev/test_review_findings.py::test_r3_fact_and_locator_checksums_must_match_the_table_checksum",
+          "tests/dev/test_review_findings.py::test_r3_fact_source_url_and_accession_must_match",
+          "tests/dev/test_review_findings.py::test_r3_locator_statement_row_or_column_disagreement_blocks",
+          "tests/dev/test_review_findings.py::test_r3_right_numbers_wrong_filing_has_full_numeric_score_but_is_rejected",
+          "tests/dev/test_review_findings.py::test_r3_schema_invalid_tables_are_rejected",
+          "tests/dev/test_review_findings.py::test_r3_synthetic_microsoft_shaped_table_passes_every_machine_check_only_in_the_unit_fixture",
+          "tests/dev/test_review_findings.py::test_r3_wrong_evidence_id_and_non_gaap_basis_block_acceptance_but_not_the_numeric_diagnostic",
+          "tests/dev/test_review_findings.py::test_r4_blocking_vs_non_blocking_issue_policy",
+          "tests/dev/test_review_findings.py::test_r4_evaluate_cli_exit_status_follows_acceptance_not_the_numeric_score",
+          "tests/dev/test_review_findings.py::test_r4_evaluate_cli_exits_nonzero_on_unresolved_conflict",
+          "tests/dev/test_review_findings.py::test_r4_unresolved_conflict_blocks_acceptance_even_with_a_full_numeric_score",
+          "tests/dev/test_review_findings.py::test_r5_a_subsidiary_functional_currency_does_not_block_a_usd_filing",
+          "tests/dev/test_review_findings.py::test_r5_evidence_kind_is_recorded",
+          "tests/dev/test_review_findings.py::test_r6_a_parent_table_beside_the_consolidated_one_is_a_legitimate_scope_difference_not_a_conflict",
+          "tests/dev/test_review_findings.py::test_r6_ordinary_titles_are_not_mistaken_for_parent_only_statements[CONSOLIDATED",
+          "tests/dev/test_review_findings.py::test_r6_ordinary_titles_are_not_mistaken_for_parent_only_statements[INCOME",
+          "tests/dev/test_review_findings.py::test_r8_the_reviewers_probe_a_non_numeric_scale_is_a_structured_issue_not_a_crash",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[+6]",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[06]",
+          "tests/dev/test_review_findings.py::test_r8_valid_scale_syntax_still_extracts[6]",
+          "tests/dev/test_review_findings.py::test_r8_valid_sign_and_scale_checks_are_preserved"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m4/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "5 failed in 0.17s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h1_titlecase_fulldates.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h2_december_thousands_loss.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h3_noise_tables.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h4_incompatible_ocf_duplicate.html]",
+          "tests/heldout/test_heldout.py::test_heldout_case[h5_layout_variant.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m4/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_extract_and_evaluate_roundtrip_on_synthetic_cache"
+    },
+    {
+      "id": 5,
+      "name": "conflict-never-detected",
+      "file": "src/finreport/extract.py",
+      "intent": "Never flag disagreeing authoritative duplicates as a conflict.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.72s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_incompatible_primary_duplicates_emit_no_fact_and_surface_a_conflict",
+          "tests/dev/test_extraction.py::test_thousands_vs_millions_between_authoritative_tables_is_an_unresolved_conflict"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m5/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "1 failed, 4 passed in 0.21s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h4_incompatible_ocf_duplicate.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m5/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_thousands_vs_millions_between_authoritative_tables_is_an_unresolved_conflict"
+    },
+    {
+      "id": 6,
+      "name": "segment-not-excluded",
+      "file": "src/finreport/extract.py",
+      "intent": "Treat segment-titled tables as consolidated candidates.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.35s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_segment_table_is_excluded_as_a_legitimate_scope_difference",
+          "tests/dev/test_extraction.py::test_unidentified_table_is_excluded_not_used"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m6/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 1,
+        "summary": "1 failed, 4 passed in 0.18s",
+        "failed": [
+          "tests/heldout/test_heldout.py::test_heldout_case[h3_noise_tables.html]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m6/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_segment_table_is_excluded_as_a_legitimate_scope_difference"
+    },
+    {
+      "id": 7,
+      "name": "nongaap-not-excluded",
+      "file": "src/finreport/extract.py",
+      "intent": "Treat non-GAAP / adjusted tables as GAAP candidates.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.27s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_non_gaap_table_is_excluded"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m7/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m7/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_non_gaap_table_is_excluded"
+    },
+    {
+      "id": 8,
+      "name": "accept-quarterly",
+      "file": "src/finreport/extract.py",
+      "intent": "Accept 'Three Months Ended' headers as annual.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.31s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_quarterly_header_is_not_accepted_as_annual",
+          "tests/dev/test_review_findings.py::test_r1_quarterly_label_in_the_year_row_is_still_rejected"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m8/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m8/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_quarterly_header_is_not_accepted_as_annual"
+    },
+    {
+      "id": 9,
+      "name": "dash-as-zero",
+      "file": "src/finreport/extract.py",
+      "intent": "Do not treat a dash as a missing amount (falls through to the amount parser).",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.73s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_dash_amount_is_missing_not_zero",
+          "tests/dev/test_review_findings.py::test_r4_blocking_vs_non_blocking_issue_policy"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m9/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m9/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_dash_amount_is_missing_not_zero"
+    },
+    {
+      "id": 10,
+      "name": "no-403-stop",
+      "file": "src/finreport/ingest.py",
+      "intent": "Retry/continue after HTTP 403/429 instead of stopping.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.59s",
+        "failed": [
+          "tests/dev/test_ingest.py::test_access_denial_stops_immediately_without_retry[403]",
+          "tests/dev/test_ingest.py::test_access_denial_stops_immediately_without_retry[429]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m10/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m10/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_access_denial_stops_immediately_without_retry[403]"
+    },
+    {
+      "id": 11,
+      "name": "no-error-page-check",
+      "file": "src/finreport/ingest.py",
+      "intent": "Skip the SEC error-page signature check.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.27s",
+        "failed": [
+          "tests/dev/test_ingest.py::test_error_page_signature_alone_is_enough_to_reject",
+          "tests/dev/test_offline_import.py::test_wrong_documents_and_error_pages_are_rejected_offline_too[body0]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m11/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m11/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "SURVIVED the original 100-test suite (100 passed); caught after test_error_page_signature_alone_is_enough_to_reject was added (1 failed, 68 passed with -x)"
+    },
+    {
+      "id": 12,
+      "name": "ua-not-required",
+      "file": "src/finreport/ingest.py",
+      "intent": "Make a request without a declared User-Agent.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "5 failed, 543 passed in 3.53s",
+        "failed": [
+          "tests/dev/test_cli_and_evaluation.py::test_init_then_fetch_without_user_agent_is_pending_exit_3",
+          "tests/dev/test_ingest.py::test_blank_user_agent_counts_as_missing",
+          "tests/dev/test_ingest.py::test_missing_user_agent_stops_before_any_request",
+          "tests/dev/test_ingest.py::test_success_records_checksum_of_saved_bytes",
+          "tests/dev/test_ingest.py::test_tampered_cache_is_not_trusted"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m12/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m12/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "first attempt used a malformed edit (collection error, not a valid detection); valid re-run caught (1 failed with -x)"
+    },
+    {
+      "id": 13,
+      "name": "xbrl-scale-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "Ignore inline-XBRL scale attribute disagreement with the printed scale.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.04s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_inline_xbrl_scale_mismatch_is_rejected",
+          "tests/dev/test_review_findings.py::test_r8_a_valid_but_wrong_scale_is_still_a_mismatch_not_invalid"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m13/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m13/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_inline_xbrl_scale_mismatch_is_rejected"
+    },
+    {
+      "id": 14,
+      "name": "scope-evidence-skipped",
+      "file": "src/finreport/extract.py",
+      "intent": "Emit facts without document-level consolidation evidence.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.30s",
+        "failed": [
+          "tests/dev/test_extraction.py::test_missing_consolidation_evidence_blocks_all_facts",
+          "tests/dev/test_review_findings.py::test_r2_text_outside_tables_follows_the_same_rule"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m14/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m14/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught; first failure test_missing_consolidation_evidence_blocks_all_facts"
+    },
+    {
+      "id": 15,
+      "name": "no-content-type-check",
+      "file": "src/finreport/ingest.py",
+      "intent": "Accept non-HTML content types.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.32s",
+        "failed": [
+          "tests/dev/test_ingest.py::test_error_pages_and_wrong_documents_are_rejected_and_not_cached[response1]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m15/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m15/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught (second batch; failing test id not captured in original output)"
+    },
+    {
+      "id": 16,
+      "name": "no-redirect-check",
+      "file": "src/finreport/ingest.py",
+      "intent": "Accept a redirect away from the requested filing URL.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.17s",
+        "failed": [
+          "tests/dev/test_ingest.py::test_error_pages_and_wrong_documents_are_rejected_and_not_cached[response3]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m16/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m16/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught (second batch; failing test id not captured in original output)"
+    },
+    {
+      "id": 17,
+      "name": "unbounded-retry-ok",
+      "file": "src/finreport/ingest.py",
+      "intent": "Retry more times than the configured bound.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.10s",
+        "failed": [
+          "tests/dev/test_ingest.py::test_retries_are_bounded"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m17/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m17/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "caught (second batch; failing test id not captured in original output)"
+    },
+    {
+      "id": 18,
+      "name": "r1-label-cell-disqualifies-header",
+      "file": "src/finreport/extract.py",
+      "intent": "R1: a period-label cell in the year row once again disqualifies the header row.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "9 failed, 539 passed in 2.84s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r1_a_repeated_identical_header_is_not_ambiguous",
+          "tests/dev/test_review_findings.py::test_r1_a_second_different_period_header_in_the_table_is_ambiguous",
+          "tests/dev/test_review_findings.py::test_r1_current_year_is_not_inferred_from_a_fixed_position",
+          "tests/dev/test_review_findings.py::test_r1_duplicate_period_columns_are_rejected",
+          "tests/dev/test_review_findings.py::test_r1_period_label_and_years_in_one_row_yields_six_facts",
+          "tests/dev/test_review_findings.py::test_r1_quarterly_label_in_the_year_row_is_still_rejected",
+          "tests/dev/test_review_findings.py::test_r1_reordered_years_in_mixed_header_map_by_header_not_position",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[(In",
+          "tests/dev/test_review_findings.py::test_r1_same_row_date_forms[Years"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m18/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m18/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 19,
+      "name": "r1-duplicate-columns-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "R1: do not reject two columns for the same period.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.46s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r1_duplicate_period_columns_are_rejected"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m19/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m19/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 20,
+      "name": "r1-ambiguous-header-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "R1: ignore a second, different period header in the same table.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.28s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r1_a_second_different_period_header_in_the_table_is_ambiguous"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m20/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m20/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 21,
+      "name": "r2-hidden-text-kept-in-cells",
+      "file": "src/finreport/parsing.py",
+      "intent": "R2: include hidden descendants' text in cell text.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "10 failed, 538 passed in 3.11s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<ix:hidden>9</ix:hidden>]",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span",
+          "tests/dev/test_review_findings.py::test_r2_hidden_text_in_an_amount_cell_is_ignored[<span><b><i"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m21/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m21/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 22,
+      "name": "r2-hidden-cell-contributes-text",
+      "file": "src/finreport/parsing.py",
+      "intent": "R2: hidden rows/cells contribute their text.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.76s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_cell_keeps_its_position_so_locators_stay_stable",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_row_is_ignored_and_does_not_create_a_conflict"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m22/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m22/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 23,
+      "name": "r2-white-text-not-flagged",
+      "file": "src/finreport/extract.py",
+      "intent": "R2: trust amount cells containing white/transparent-coloured text.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.76s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r2_white_text_in_an_amount_cell_is_flagged_not_trusted"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m23/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m23/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 24,
+      "name": "r2-hidden-text-outside-tables-kept",
+      "file": "src/finreport/parsing.py",
+      "intent": "R2: use hidden text outside tables (evidence sentences, headings).",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.27s",
+        "failed": [
+          "tests/dev/test_parsing.py::test_hidden_inline_xbrl_header_and_comments_are_not_text",
+          "tests/dev/test_review_findings.py::test_r2_a_hidden_statement_heading_does_not_identify_the_table",
+          "tests/dev/test_review_findings.py::test_r2_text_outside_tables_follows_the_same_rule"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m24/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m24/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 25,
+      "name": "r3-source-identity-unchecked",
+      "file": "src/finreport/evaluation.py",
+      "intent": "R3: do not compare filing identity in the acceptance decision.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.84s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r3_right_numbers_wrong_filing_has_full_numeric_score_but_is_rejected"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m25/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.15s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m25/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 26,
+      "name": "r3-evidence-id-unchecked",
+      "file": "src/finreport/evaluation.py",
+      "intent": "R3: do not require the expected evidence ID.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.24s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r3_wrong_evidence_id_and_non_gaap_basis_block_acceptance_but_not_the_numeric_diagnostic"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m26/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m26/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 27,
+      "name": "r3-manifest-checksum-unchecked",
+      "file": "src/finreport/evaluation.py",
+      "intent": "R3: do not compare the table checksum with the manifest checksum.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.38s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r3_table_checksum_must_equal_the_manifest_checksum[0000000000000000000000000000000000000000000000000000000000000000-source_checksum_mismatch]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m27/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m27/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 28,
+      "name": "r4-unresolved-conflicts-ignored",
+      "file": "src/finreport/evaluation.py",
+      "intent": "R4: unresolved conflicts do not block acceptance.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.28s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r4_unresolved_conflict_blocks_acceptance_even_with_a_full_numeric_score"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m28/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m28/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 29,
+      "name": "r4-all-issues-non-blocking",
+      "file": "src/finreport/evaluation.py",
+      "intent": "R4: no extraction issue blocks acceptance.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.66s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_the_review_probes_negative_input_cannot_be_accepted_by_evaluate",
+          "tests/dev/test_review_findings.py::test_r4_blocking_vs_non_blocking_issue_policy"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m29/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m29/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 30,
+      "name": "r5-local-currency-contradiction-ignored",
+      "file": "src/finreport/extract.py",
+      "intent": "R5: ignore non-USD currency text in the statement header.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "12 failed, 536 passed in 3.18s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_a_non_usd_header_blocks_even_with_a_usd_document_statement",
+          "tests/dev/test_c1_c2.py::test_c2c_a_valid_usd_unit_does_not_override_a_non_usd_statement_header",
+          "tests/dev/test_review_findings.py::test_r5_a_non_usd_heading_is_rejected_too",
+          "tests/dev/test_review_findings.py::test_r5_explicit_canadian_dollars_are_not_labelled_usd",
+          "tests/dev/test_review_findings.py::test_r5_mixed_usd_and_other_currency_text_is_rejected_conservatively",
+          "tests/dev/test_review_findings.py::test_r5_other_currency_words_in_the_statement_header_are_rejected[(In"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m30/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m30/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 31,
+      "name": "r5-document-currency-contradiction-ignored",
+      "file": "src/finreport/extract.py",
+      "intent": "R5: ignore a document-level non-USD reporting-currency statement.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "5 failed, 543 passed in 2.68s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_a_conflicting_document_statement_blocks_even_with_usd_header_evidence[Our",
+          "tests/dev/test_c1_c2.py::test_c2_a_conflicting_document_statement_blocks_even_with_usd_header_evidence[The",
+          "tests/dev/test_c1_c2.py::test_c2_conflicting_document_statements_block_each_other",
+          "tests/dev/test_c1_c2.py::test_c2c_a_valid_usd_unit_does_not_override_a_document_statement_in_another_currency",
+          "tests/dev/test_review_findings.py::test_r5_a_document_level_reporting_currency_statement_contradicts_the_dollar_sign"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m31/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m31/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 32,
+      "name": "r6-non-consolidated-not-excluded",
+      "file": "src/finreport/extract.py",
+      "intent": "R6: parent-only/standalone statements inherit consolidated scope.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "10 failed, 538 passed in 3.28s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r6_a_parent_table_beside_the_consolidated_one_is_a_legitimate_scope_difference_not_a_conflict",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[CONDENSED",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[CONSOLIDATING",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[INCOME",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[PARENT",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[PARENT-ONLY",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[STANDALONE",
+          "tests/dev/test_review_findings.py::test_r6_non_consolidated_income_statements_are_not_emitted_as_consolidated[UNCONSOLIDATED",
+          "tests/dev/test_review_findings.py::test_r6_the_cue_may_sit_in_the_tables_own_header_rows",
+          "tests/dev/test_review_findings.py::test_r6_the_reviewers_probe_no_income_statement_facts_inherit_the_document_default"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m32/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m32/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 33,
+      "name": "r7-redirects-followed",
+      "file": "src/finreport/ingest.py",
+      "intent": "R7: let urllib follow redirects again.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.21s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r7_the_real_transport_issues_exactly_one_request_for_a_redirect"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m33/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m33/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 34,
+      "name": "r7-redirect-status-not-refused",
+      "file": "src/finreport/ingest.py",
+      "intent": "R7: do not give a 3xx response its explicit refusal.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "5 failed, 543 passed in 3.23s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r7_fetch_refuses_a_redirect_without_a_second_request[301]",
+          "tests/dev/test_review_findings.py::test_r7_fetch_refuses_a_redirect_without_a_second_request[302]",
+          "tests/dev/test_review_findings.py::test_r7_fetch_refuses_a_redirect_without_a_second_request[303]",
+          "tests/dev/test_review_findings.py::test_r7_fetch_refuses_a_redirect_without_a_second_request[307]",
+          "tests/dev/test_review_findings.py::test_r7_fetch_refuses_a_redirect_without_a_second_request[308]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m34/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m34/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 35,
+      "name": "r8-invalid-ix-scale-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "R8: do not report an invalid inline-XBRL scale as such.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "14 failed, 534 passed in 3.35s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[+6x]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[-3]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[0x6]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[13]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[1e3]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[25]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[3.5]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[6",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[999999999999999999999999]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[\\u0666]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[]",
+          "tests/dev/test_review_findings.py::test_r8_malformed_or_unreasonable_scales_are_rejected_without_exceptions[six]",
+          "tests/dev/test_review_findings.py::test_r8_the_reviewers_probe_a_non_numeric_scale_is_a_structured_issue_not_a_crash"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m35/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.15s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m35/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 36,
+      "name": "r8-invalid-ix-sign-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "R8: accept any inline-XBRL sign attribute.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.36s",
+        "failed": [
+          "tests/dev/test_review_findings.py::test_r8_an_invalid_sign_attribute_is_a_structured_issue"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m36/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m36/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the R1-R8 fixes; no original observation"
+    },
+    {
+      "id": 37,
+      "name": "c1-source-check-optional",
+      "file": "src/finreport/evaluation.py",
+      "intent": "C1: acceptance may be granted without any source verification.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "11 failed, 537 passed in 3.16s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_the_api_cannot_accept_without_a_source_verification",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-normalized_value]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-period]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-scope]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-units0]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-units1]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-value_and_sign0]",
+          "tests/dev/test_cli_and_evaluation.py::test_each_mismatch_class_fails_that_fact_only[<lambda>-value_and_sign1]",
+          "tests/dev/test_cli_and_evaluation.py::test_locator_disagreement_is_informational_not_a_failure",
+          "tests/dev/test_cli_and_evaluation.py::test_missing_fact_and_extra_facts_are_reported",
+          "tests/dev/test_cli_and_evaluation.py::test_perfect_table_scores_six_of_six"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m37/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m37/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 38,
+      "name": "c1-verification-failure-ignored",
+      "file": "src/finreport/evaluation.py",
+      "intent": "C1: a failed source verification does not block acceptance.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "5 failed, 543 passed in 3.30s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_a_deleted_cached_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_directory_in_place_of_the_cached_file_is_not_a_source",
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_byte_count_must_match_the_cached_file",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_filename_must_match_the_cached_file"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m38/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m38/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 39,
+      "name": "c1-table-vs-verified-file-unchecked",
+      "file": "src/finreport/evaluation.py",
+      "intent": "C1: do not compare the fact table's checksum with the verified file's checksum.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.28s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_the_verified_file_checksum_is_compared_with_the_fact_table_even_without_a_manifest_checksum"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m39/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m39/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 40,
+      "name": "c1-sha256-check-skipped",
+      "file": "src/finreport/ingest.py",
+      "intent": "C1: do not compare the cached file's SHA-256 with the manifest.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "6 failed, 542 passed in 3.09s",
+        "failed": [
+          "tests/dev/test_answers.py::test_cli_refuses_when_the_cached_source_changed_after_extraction",
+          "tests/dev/test_c1_c2.py::test_c1_a_manifest_checksum_edited_to_disagree_with_the_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_same_size_altered_file_is_caught_by_the_checksum",
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_verification_also_covers_a_downloaded_retrieval_record",
+          "tests/dev/test_cli_and_evaluation.py::test_extract_refuses_on_checksum_mismatch"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m40/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.14s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m40/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 41,
+      "name": "c1-byte-count-check-skipped",
+      "file": "src/finreport/ingest.py",
+      "intent": "C1: do not compare the cached file's byte count with the manifest.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.14s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_byte_count_must_match_the_cached_file"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m41/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m41/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 42,
+      "name": "c1-filename-check-skipped",
+      "file": "src/finreport/ingest.py",
+      "intent": "C1: do not compare the cached filename with the manifest.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.39s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_filename_must_match_the_cached_file"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m42/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m42/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 43,
+      "name": "c1-missing-file-not-reported",
+      "file": "src/finreport/ingest.py",
+      "intent": "C1: do not treat a missing/non-regular cache file as a problem.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.31s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_a_deleted_cached_file_blocks_acceptance",
+          "tests/dev/test_c1_c2.py::test_c1_a_directory_in_place_of_the_cached_file_is_not_a_source"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m43/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.23s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m43/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 44,
+      "name": "c1-extract-skips-verification",
+      "file": "src/finreport/cli.py",
+      "intent": "C1: `extract` proceeds on a cache that does not match the manifest.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 544 passed in 3.27s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c1_changed_bytes_of_a_different_size_block_acceptance_and_exit_nonzero",
+          "tests/dev/test_c1_c2.py::test_c1_the_recorded_filename_must_match_the_cached_file",
+          "tests/dev/test_cli_and_evaluation.py::test_extract_refuses_on_checksum_mismatch",
+          "tests/dev/test_offline_import.py::test_cli_import_then_extract_end_to_end"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m44/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m44/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 45,
+      "name": "c2-dollar-sign-is-evidence",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: treat the dollar symbol as enough currency evidence.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "37 failed, 511 passed in 3.45s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[A",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[Customers",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[Foreign",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[Our",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[Prices",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[Revenue",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[The",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[We",
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[sentence9]",
+          "tests/dev/test_c1_c2.py::test_c2_dollar_symbols_alone_do_not_establish_reporting_currency",
+          "tests/dev/test_c1_c2.py::test_c2_the_negative_base_alone_yields_no_facts",
+          "tests/dev/test_c1_c2.py::test_c2_the_review_probes_negative_input_cannot_be_accepted_by_evaluate",
+          "tests/dev/test_c1_c2.py::test_c2_the_reviews_debt_denomination_is_not_currency_evidence",
+          "tests/dev/test_c1_c2.py::test_c2_the_reviews_unrelated_usd_mention_is_not_currency_evidence",
+          "tests/dev/test_c1_c2.py::test_c2a_a_commentary_sentence_beside_a_scale_line_is_not_header_evidence",
+          "tests/dev/test_c1_c2.py::test_c2a_header_evidence_binds_to_its_own_table_only",
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[The",
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[sentence0]",
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[sentence1]",
+          "tests/dev/test_c1_c2.py::test_c2c_a_unit_outside_ix_resources_is_ignored",
+          "tests/dev/test_c1_c2.py::test_c2c_amounts_without_a_unitref_are_insufficient_even_with_a_usd_unit_defined",
+          "tests/dev/test_c1_c2.py::test_c2c_an_undeclared_measure_prefix_is_insufficient",
+          "tests/dev/test_c1_c2.py::test_c2c_an_unrelated_usd_unit_elsewhere_is_insufficient",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units1]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units2]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units3]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units4]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units5]",
+          "tests/dev/test_c1_c2.py::test_c2c_only_the_tagged_cells_with_a_usd_unit_produce_facts",
+          "tests/dev/test_c1_c2.py::test_c2c_the_unit_namespace_must_be_the_iso4217_namespace",
+          "tests/dev/test_c1_c2.py::test_c2c_untagged_amounts_are_insufficient_even_with_a_usd_unit_defined",
+          "tests/dev/test_extraction.py::test_missing_currency_evidence_is_reported",
+          "tests/dev/test_review_findings.py::test_r5_a_passing_mention_of_the_dollar_is_not_a_currency_statement"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m45/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m45/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 46,
+      "name": "c2-header-commentary-filter-off",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: header/scale-line evidence may be commentary or debt text.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.95s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2a_a_commentary_sentence_beside_a_scale_line_is_not_header_evidence"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m46/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m46/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 47,
+      "name": "c2-document-commentary-filter-off",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: a document sentence about debt, hedging or FX may count as evidence.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.27s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[The",
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[sentence0]",
+          "tests/dev/test_c1_c2.py::test_c2b_a_governing_sentence_mixed_with_debt_or_fx_commentary_is_not_clear_evidence[sentence1]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m47/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m47/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 48,
+      "name": "c2-any-usd-sentence-governs",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: any sentence mentioning USD counts as governing the statements.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 544 passed in 3.21s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_commentary_debt_and_functional_currency_do_not_govern_the_statements[A",
+          "tests/dev/test_c1_c2.py::test_c2a_header_evidence_binds_to_its_own_table_only",
+          "tests/dev/test_c1_c2.py::test_c2c_a_unit_outside_ix_resources_is_ignored",
+          "tests/dev/test_review_findings.py::test_r5_a_passing_mention_of_the_dollar_is_not_a_currency_statement"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m48/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m48/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 49,
+      "name": "c2-unit-not-the-amounts-own",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: use the first USD unit in the document instead of the amount's own unitRef.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 544 passed in 3.19s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_a_usd_header_does_not_override_a_non_usd_unit_on_the_amount",
+          "tests/dev/test_c1_c2.py::test_c2c_an_unrelated_usd_unit_elsewhere_is_insufficient",
+          "tests/dev/test_c1_c2.py::test_c2c_each_amount_uses_its_own_unit_reference",
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units5]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m49/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m49/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 50,
+      "name": "c2-unit-outside-resources-accepted",
+      "file": "src/finreport/parsing.py",
+      "intent": "C2: accept xbrli:unit elements anywhere in the document.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.43s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2c_a_unit_outside_ix_resources_is_ignored"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m50/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m50/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 51,
+      "name": "c2-non-simple-unit-accepted",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: accept divide/multi-measure units.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.40s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2c_only_a_simple_iso4217_usd_unit_counts[units4]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m51/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m51/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 52,
+      "name": "c2-namespace-unchecked",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: do not check that the unit measure is in the ISO 4217 namespace.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.26s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2c_the_unit_namespace_must_be_the_iso4217_namespace"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m52/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m52/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 53,
+      "name": "c2-non-usd-unit-not-a-contradiction",
+      "file": "src/finreport/extract.py",
+      "intent": "C2: an amount whose own unit is another currency is not treated as a conflict.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.34s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_a_usd_header_does_not_override_a_non_usd_unit_on_the_amount",
+          "tests/dev/test_c1_c2.py::test_c2c_a_non_usd_iso_unit_is_a_contradiction_not_just_missing_evidence",
+          "tests/dev/test_c1_c2.py::test_c2c_each_amount_uses_its_own_unit_reference"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m53/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m53/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 54,
+      "name": "c2-unit-details-not-required",
+      "file": "src/finreport/schemas.py",
+      "intent": "C2: unit-based facts need not preserve the unit id, measure and locator.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.33s",
+        "failed": [
+          "tests/dev/test_c1_c2.py::test_c2_a_unit_based_fact_must_carry_its_unit_details"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m54/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.24s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m54/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the C1/C2 fixes; no original observation"
+    },
+    {
+      "id": 55,
+      "name": "ans-percent-zero-guard-removed",
+      "file": "src/finreport/answers.py",
+      "intent": "Compute a percentage even when the prior amount is zero.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "11 failed, 537 passed in 3.32s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_percentage_cannot_accompany_a_non_positive_prior_amount",
+          "tests/dev/test_answers.py::test_zero_prior_amount_returns_the_absolute_change_and_withholds_the_percentage",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_exits_5_when_the_case_file_differs_from_the_freeze_record",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer",
+          "tests/dev/test_cli_answers.py::test_harness_checks_that_the_cited_row_text_contains_the_amount",
+          "tests/dev/test_cli_answers.py::test_harness_checks_the_expected_evidence_ids",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_percentage_separately",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_reason_code",
+          "tests/dev/test_narrative.py::test_zero_prior_has_no_percentage_and_scripted_says_why",
+          "tests/dev/test_narrative.py::test_zero_prior_model_inventing_a_percentage_is_rejected"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m55/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m55/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 56,
+      "name": "ans-percent-negative-guard-removed",
+      "file": "src/finreport/answers.py",
+      "intent": "Compute a percentage from a negative prior amount.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.40s",
+        "failed": [
+          "tests/dev/test_answers.py::test_negative_prior_amount_withholds_the_percentage_with_the_right_reason",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_narrative.py::test_negative_prior_has_no_percentage"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m56/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m56/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 57,
+      "name": "ans-rounding-half-even",
+      "file": "src/finreport/answers.py",
+      "intent": "Display percentages with banker's rounding instead of ROUND_HALF_UP.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.33s",
+        "failed": [
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-799--0.13%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-801-0.13%]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m57/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m57/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 58,
+      "name": "ans-percent-direction-swapped",
+      "file": "src/finreport/answers.py",
+      "intent": "Percentage change computed as (prior - current) / prior.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "18 failed, 530 passed in 2.82s",
+        "failed": [
+          "tests/dev/test_answers.py::test_build_calculation_records_every_step",
+          "tests/dev/test_answers.py::test_change_in_the_reverse_direction_is_a_decrease_from_the_first_named_year",
+          "tests/dev/test_answers.py::test_cli_exit_codes_follow_the_answer_status",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[net_income-net",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[operating_cash_flow-operating",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[revenue-revenue]",
+          "tests/dev/test_answers.py::test_exact_percentage_uses_28_significant_digits_independently_checked",
+          "tests/dev/test_answers.py::test_facts_in_different_scales_are_compared_on_normalized_amounts",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[200-201-0.50%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-4-33.33%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-5-66.67%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-799--0.13%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-801-0.13%]",
+          "tests/dev/test_answers.py::test_positive_prior_with_negative_current_gives_a_negative_percentage",
+          "tests/dev/test_answers.py::test_q2_change_revenue_fy2023_to_fy2024",
+          "tests/dev/test_answers.py::test_the_three_questions_end_to_end_on_the_received_real_filing",
+          "tests/dev/test_cli_answers.py::test_answer_text_shows_question_status_facts_calculation_and_excerpts",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m58/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m58/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 59,
+      "name": "ans-percent-precision-reduced",
+      "file": "src/finreport/answers.py",
+      "intent": "Lose significant digits in the exact percentage.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.52s",
+        "failed": [
+          "tests/dev/test_answers.py::test_build_calculation_records_every_step",
+          "tests/dev/test_answers.py::test_exact_percentage_uses_28_significant_digits_independently_checked",
+          "tests/dev/test_answers.py::test_q2_change_revenue_fy2023_to_fy2024"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m59/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.15s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m59/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 60,
+      "name": "ans-absolute-change-direction-swapped",
+      "file": "src/finreport/answers.py",
+      "intent": "Absolute change computed as prior - current.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "60 failed, 476 passed, 12 errors in 3.48s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[accounting_basis-IFRS]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[normalized_value-value1]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[period_label-FY2022]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[raw_amount_text-$901]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[reported_value-value0]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scale_multiplier-1000]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scope-segment]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[source_checksum-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee]",
+          "tests/dev/test_answers.py::test_a_percentage_cannot_accompany_a_non_positive_prior_amount",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update0-absolute_change_does_not_equal_current_minus_prior]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update1-percent_change_does_not_match_recomputation]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update2-percent_display_does_not_match_rounding_rule]",
+          "tests/dev/test_answers.py::test_a_tampered_calculation_is_caught_by_independent_recomputation[update3-percent_has_a_withheld_reason]",
+          "tests/dev/test_answers.py::test_a_tampered_locator_is_caught",
+          "tests/dev/test_answers.py::test_a_valid_answer_validates_clean",
+          "tests/dev/test_answers.py::test_an_answered_answer_needs_the_right_amount_of_evidence",
+          "tests/dev/test_answers.py::test_build_calculation_records_every_step",
+          "tests/dev/test_answers.py::test_calculation_inputs_must_be_exactly_the_cited_evidence_and_values",
+          "tests/dev/test_answers.py::test_change_in_the_reverse_direction_is_a_decrease_from_the_first_named_year",
+          "tests/dev/test_answers.py::test_cli_exit_codes_follow_the_answer_status",
+          "tests/dev/test_answers.py::test_duplicate_evidence_references_are_reported",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[net_income-net",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[operating_cash_flow-operating",
+          "tests/dev/test_answers.py::test_every_real_metric_looks_up_and_changes_correctly[revenue-revenue]",
+          "tests/dev/test_answers.py::test_facts_in_different_scales_are_compared_on_normalized_amounts",
+          "tests/dev/test_answers.py::test_negative_prior_amount_withholds_the_percentage_with_the_right_reason",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[200-201-0.50%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-4-33.33%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[3-5-66.67%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-799--0.13%]",
+          "tests/dev/test_answers.py::test_percentage_display_is_rounded_half_up_to_two_places[800-801-0.13%]",
+          "tests/dev/test_answers.py::test_phrasing_variants_of_the_change_question[How",
+          "tests/dev/test_answers.py::test_phrasing_variants_of_the_change_question[What",
+          "tests/dev/test_answers.py::test_phrasing_variants_of_the_change_question[how",
+          "tests/dev/test_answers.py::test_positive_prior_with_negative_current_gives_a_negative_percentage",
+          "tests/dev/test_answers.py::test_q2_change_revenue_fy2023_to_fy2024",
+          "tests/dev/test_answers.py::test_the_answer_value_must_match_its_calculation_and_cited_evidence",
+          "tests/dev/test_answers.py::test_the_cited_metric_and_years_must_be_the_ones_asked_for",
+          "tests/dev/test_answers.py::test_the_three_questions_end_to_end_on_the_received_real_filing",
+          "tests/dev/test_answers.py::test_unknown_evidence_ids_do_not_resolve",
+          "tests/dev/test_answers.py::test_unresolved_and_refused_answers_cannot_be_built_with_a_citation_or_a_value",
+          "tests/dev/test_answers.py::test_zero_prior_amount_returns_the_absolute_change_and_withholds_the_percentage",
+          "tests/dev/test_cli_answers.py::test_answer_json_exit_codes_and_contract[How",
+          "tests/dev/test_cli_answers.py::test_answer_text_shows_question_status_facts_calculation_and_excerpts",
+          "tests/dev/test_cli_answers.py::test_concise_answer_for_a_decrease_says_decreased_and_drops_the_sign",
+          "tests/dev/test_cli_answers.py::test_demo_default_root_falls_back_to_the_bundled_example",
+          "tests/dev/test_cli_answers.py::test_demo_runs_offline_from_the_example_root_and_all_three_behave",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_exits_5_when_the_case_file_differs_from_the_freeze_record",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer",
+          "tests/dev/test_cli_answers.py::test_harness_checks_that_the_cited_row_text_contains_the_amount",
+          "tests/dev/test_cli_answers.py::test_harness_checks_the_expected_evidence_ids",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_percentage_separately",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_reason_code",
+          "tests/dev/test_narrative.py::test_bundle_values_match_the_answer",
+          "tests/dev/test_narrative.py::test_decrease_to_negative_is_a_decrease_with_the_right_amounts",
+          "tests/dev/test_narrative.py::test_negative_prior_has_no_percentage",
+          "tests/dev/test_narrative.py::test_numbers_must_come_from_the_cited_items_not_just_the_bundle",
+          "tests/dev/test_narrative.py::test_q2_good_claims_pass",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims0-direction_contradicts_calculation]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims1-percentage_differs_from_calculation]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims2-percentage_differs_from_calculation]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims3-number_not_supported_by_cited_evidence]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims4-period_not_in_cited_evidence]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims5-percentage_not_stated]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims6-primary_value_not_stated]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims7-ambiguous_direction]",
+          "tests/dev/test_narrative.py::test_q2_scripted_is_validated_with_the_calculation_cited",
+          "tests/dev/test_narrative.py::test_synthetic_baseline_has_the_expected_shape",
+          "tests/dev/test_narrative.py::test_zero_prior_has_no_percentage_and_scripted_says_why",
+          "tests/dev/test_narrative.py::test_zero_prior_model_inventing_a_percentage_is_rejected"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m60/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m60/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 61,
+      "name": "ans-comparable-metric-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Compare facts of different metrics.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.21s",
+        "failed": [
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes0-metric_mismatch]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m61/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m61/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 62,
+      "name": "ans-comparable-basis-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Compare facts with different accounting bases.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 2.96s",
+        "failed": [
+          "tests/dev/test_answers.py::test_end_to_end_incomparable_facts_are_refused_not_computed",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes2-accounting_basis_mismatch]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m62/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m62/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 63,
+      "name": "ans-comparable-source-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Silently combine facts from different filings.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 546 passed in 3.30s",
+        "failed": [
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes4-source_filing_mismatch]",
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes5-source_filing_mismatch]"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m63/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m63/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 64,
+      "name": "ans-comparable-same-period-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Compare a period with itself.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "8 failed, 540 passed in 3.41s",
+        "failed": [
+          "tests/dev/test_answers.py::test_incomparable_facts_are_named[changes6-same_period]",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_exits_5_when_the_case_file_differs_from_the_freeze_record",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer",
+          "tests/dev/test_cli_answers.py::test_harness_checks_that_the_cited_row_text_contains_the_amount",
+          "tests/dev/test_cli_answers.py::test_harness_checks_the_expected_evidence_ids",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_percentage_separately",
+          "tests/dev/test_cli_answers.py::test_harness_scores_the_reason_code"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m64/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.23s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m64/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 65,
+      "name": "ans-comparable-period-length-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Compare periods of very different length.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.32s",
+        "failed": [
+          "tests/dev/test_answers.py::test_period_length_must_be_comparable_even_if_both_are_marked_annual"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m65/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m65/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 66,
+      "name": "ans-normalization-consistency-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Trust a normalized amount that disagrees with reported value x scale.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 2.41s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_normalized_amount_inconsistent_with_reported_and_scale_is_refused",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m66/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m66/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 67,
+      "name": "ans-conflict-flag-ignored",
+      "file": "src/finreport/answers.py",
+      "intent": "Use a fact flagged with a conflict.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.91s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_fact_flagged_with_a_conflict_is_not_used"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m67/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m67/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 68,
+      "name": "ans-blocking-issue-ignored",
+      "file": "src/finreport/answers.py",
+      "intent": "Use a fact that has a blocking extraction issue.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.30s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_blocking_issue_for_the_metric_refuses_but_a_non_blocking_one_does_not"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m68/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m68/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 69,
+      "name": "ans-unverified-source-answers-anyway",
+      "file": "src/finreport/answers.py",
+      "intent": "Answer from evidence whose source is not verified.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "10 failed, 538 passed in 2.96s",
+        "failed": [
+          "tests/dev/test_answers.py::test_an_unverified_source_refuses_answers_that_need_evidence",
+          "tests/dev/test_answers.py::test_cli_refuses_when_the_cached_source_changed_after_extraction",
+          "tests/dev/test_answers.py::test_cli_without_a_manifest_refuses_to_answer_from_evidence",
+          "tests/dev/test_cli_answers.py::test_a_present_but_wrong_cached_file_is_never_excused_by_the_snapshot",
+          "tests/dev/test_cli_answers.py::test_ask_stays_strict_and_refuses_without_the_filing_bytes",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer",
+          "tests/dev/test_cli_answers.py::test_fact_table_without_snapshot_record_is_refused_not_trusted",
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_wrong_accession_record",
+          "tests/dev/test_narrative.py::test_refused_answer_gets_the_deterministic_reason_only"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m69/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m69/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 70,
+      "name": "ans-future-period-check-removed",
+      "file": "src/finreport/answers.py",
+      "intent": "Treat a period after the evidence as just a missing period.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 545 passed in 3.35s",
+        "failed": [
+          "tests/dev/test_answers.py::test_unsupported_and_unresolvable_questions_cite_nothing[How",
+          "tests/dev/test_answers.py::test_unsupported_and_unresolvable_questions_cite_nothing[What",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m70/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m70/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 71,
+      "name": "ans-nonanswer-shape-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Allow an unresolved or refused answer to carry a value, evidence or calculation.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 3.29s",
+        "failed": [
+          "tests/dev/test_answers.py::test_unresolved_and_refused_answers_cannot_be_built_with_a_citation_or_a_value"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m71/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.24s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m71/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 72,
+      "name": "ans-evidence-fields-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Do not compare a cited evidence reference's fields with the fact table.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "9 failed, 539 passed in 3.65s",
+        "failed": [
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[accounting_basis-IFRS]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[normalized_value-value1]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[period_label-FY2022]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[raw_amount_text-$901]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[reported_value-value0]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scale_multiplier-1000]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[scope-segment]",
+          "tests/dev/test_answers.py::test_a_cited_field_that_differs_from_the_fact_table_is_caught[source_checksum-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee]",
+          "tests/dev/test_answers.py::test_a_tampered_locator_is_caught"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m72/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m72/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 73,
+      "name": "ans-requested-evidence-unchecked",
+      "file": "src/finreport/answers.py",
+      "intent": "Do not check that the cited metric and years are the ones asked for.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.96s",
+        "failed": [
+          "tests/dev/test_answers.py::test_the_cited_metric_and_years_must_be_the_ones_asked_for"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m73/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m73/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 74,
+      "name": "ans-self-validation-skipped",
+      "file": "src/finreport/answers.py",
+      "intent": "Return an answer even if it fails its own validators.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 547 passed in 2.49s",
+        "failed": [
+          "tests/dev/test_answers.py::test_an_answer_that_fails_its_own_validators_is_never_returned"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m74/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m74/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    },
+    {
+      "id": 75,
+      "name": "ans-any-entity-accepted",
+      "file": "src/finreport/answers.py",
+      "intent": "Accept any company name in a question.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "5 failed, 543 passed in 3.43s",
+        "failed": [
+          "tests/dev/test_answers.py::test_phrasing_variants_of_the_lookup[What",
+          "tests/dev/test_answers.py::test_the_entity_must_be_the_filings_company",
+          "tests/dev/test_answers.py::test_unsupported_and_unresolvable_questions_cite_nothing[What",
+          "tests/dev/test_cli_answers.py::test_eval_answers_all_pass_on_the_example_root_with_separate_dimensions",
+          "tests/dev/test_cli_answers.py::test_eval_harness_detects_a_wrong_value_a_bad_citation_and_a_false_answer"
+        ],
+        "imported_from": "/tmp/tmpohmyt_zp/m75/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmpohmyt_zp/m75/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "added with the answer layer; no original observation"
+    }
+  ],
+  "history_demo": {
+    "exit": 0,
+    "summary": "533 passed, 1 deselected in 2.87s",
+    "failed": [],
+    "imported_from": "/tmp/tmpohmyt_zp/demo/finreport/__init__.py",
+    "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev --ignore=tests/dev/test_offline_import.py --deselect=tests/dev/test_ingest.py::test_error_page_signature_alone_is_enough_to_reject",
+    "note": "no-error-page-check against the dev suite minus the isolating test and minus tests/dev/test_offline_import.py (approximation of the original 100-test suite). Exit 0 = mutation survives."
+  },
+  "detected": 75,
+  "total": 75
+}

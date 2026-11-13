@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -257,7 +257,7 @@
+ def fact_integrity_problems(f: Fact, book: FactBook) -> list[str]:
+     """Reasons a single fact must not be used to answer, whatever the question."""
+     out: list[str] = []
+-    if f.normalized_value != f.reported_value * f.scale_multiplier:
++    if False:
+         out.append("normalized_value_inconsistent_with_reported_value_and_scale")
+     if f.scale_multiplier not in SCALE_NAMES:
+         out.append("unsupported_scale_multiplier")

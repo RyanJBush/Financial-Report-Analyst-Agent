@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -285,7 +285,7 @@
+         out.append("metric_mismatch")
+     if prior.scope != current.scope:
+         out.append("scope_mismatch")
+-    if prior.accounting_basis != current.accounting_basis:
++    if False:
+         out.append("accounting_basis_mismatch")
+     if prior.currency != current.currency:
+         out.append("currency_mismatch")

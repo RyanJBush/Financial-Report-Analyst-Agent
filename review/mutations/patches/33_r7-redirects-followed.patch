@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -84,7 +84,7 @@
+ def urllib_transport(url: str, headers: dict[str, str], timeout: float) -> HttpResponse:
+     """Real transport. Honors HTTPS_PROXY/SSL_CERT_FILE from the environment. Makes exactly one request."""
+     request = urllib.request.Request(url, headers=headers)
+-    opener = urllib.request.build_opener(_NoRedirect)  # built per call so environment proxies are read at call time
++    opener = urllib.request.build_opener()  # built per call so environment proxies are read at call time
+     try:
+         with opener.open(request, timeout=timeout) as resp:  # noqa: S310 (https only, checked by caller)
+             return HttpResponse(

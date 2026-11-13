@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -151,7 +151,7 @@
+     """Content checks shared by HTTP downloads and offline imports. Raises InvalidFiling."""
+     head = body[:50_000].decode("utf-8", errors="replace").lower()
+     for signature in ERROR_PAGE_SIGNATURES:
+-        if signature in head:
++        if False:
+             raise InvalidFiling(f"response looks like an SEC error page (matched {signature!r})")
+     if len(body) < min_bytes:
+         raise InvalidFiling(f"body is {len(body)} bytes, below minimum {min_bytes}; likely not a full filing")

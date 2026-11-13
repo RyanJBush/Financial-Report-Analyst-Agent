@@ -1,0 +1,332 @@
+[
+  {
+    "id": 101,
+    "name": "validator-no-period-check",
+    "file": "src/finreport/narrative.py",
+    "old": "if label not in allowed_periods:",
+    "new": "if False:",
+    "intent": "A claim may name a fiscal year that is not in its cited evidence.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 102,
+    "name": "validator-no-number-support",
+    "file": "src/finreport/narrative.py",
+    "old": "if not expected_units:",
+    "new": "if False:",
+    "intent": "A number need not equal any cited amount.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 103,
+    "name": "validator-no-unit-check",
+    "file": "src/finreport/narrative.py",
+    "old": "if stated not in expected_units:",
+    "new": "if False:",
+    "intent": "Unit/scale words are not checked against the evidence.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 104,
+    "name": "validator-no-percent-check",
+    "file": "src/finreport/narrative.py",
+    "old": "elif norm != calc_percent:",
+    "new": "elif False:",
+    "intent": "A percentage may differ from the calculation.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 105,
+    "name": "validator-no-direction-check",
+    "file": "src/finreport/narrative.py",
+    "old": "elif (inc and cited_calc.direction != \"increase\") or (dec and cited_calc.direction != \"decrease\"):",
+    "new": "elif False:",
+    "intent": "Increase/decrease wording may contradict the calculation.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 106,
+    "name": "validator-no-forecast-filter",
+    "file": "src/finreport/narrative.py",
+    "old": "if FORECAST_RE.search(text):",
+    "new": "if False:",
+    "intent": "Forecast wording is accepted.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 107,
+    "name": "validator-no-causal-filter",
+    "file": "src/finreport/narrative.py",
+    "old": "if CAUSAL_RE.search(text):",
+    "new": "if False:",
+    "intent": "Causal/explanatory wording is accepted.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 108,
+    "name": "validator-no-framing-filter",
+    "file": "src/finreport/narrative.py",
+    "old": "if FRAMING_RE.search(text):",
+    "new": "if False:",
+    "intent": "Segment/adjusted/non-GAAP framing is accepted.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 109,
+    "name": "validator-ignore-invalid-reference",
+    "file": "src/finreport/narrative.py",
+    "old": "bad(\"invalid_or_irrelevant_evidence_reference\", eid)",
+    "new": "pass",
+    "intent": "A citation to an ID outside the bundle is accepted.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 110,
+    "name": "validator-allow-uncited-claim",
+    "file": "src/finreport/narrative.py",
+    "old": "if not claim.evidence_ids and cited_calc is None:",
+    "new": "if False:",
+    "intent": "A claim with no citation is accepted.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 111,
+    "name": "validator-primary-value-optional",
+    "file": "src/finreport/narrative.py",
+    "old": "if primary.amount_text.replace(\",\", \"\") not in amounts:",
+    "new": "if False:",
+    "intent": "The looked-up value need not be stated.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 112,
+    "name": "validator-percentage-optional",
+    "file": "src/finreport/narrative.py",
+    "old": "bundle.calc.percent_text not in percents",
+    "new": "False",
+    "intent": "The percentage need not be stated.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 113,
+    "name": "validator-negative-sign-optional",
+    "file": "src/finreport/narrative.py",
+    "old": "bad(\"negative_amount_described_without_sign_or_word\")",
+    "new": "pass",
+    "intent": "A negative amount may be described as positive.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 114,
+    "name": "parser-allows-extra-top-level-keys",
+    "file": "src/finreport/narrative.py",
+    "old": "if not isinstance(obj, dict) or set(obj) != {\"claims\"}:",
+    "new": "if not isinstance(obj, dict):",
+    "intent": "Extra keys beside 'claims' are tolerated.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 115,
+    "name": "parser-unbounded-claim-count",
+    "file": "src/finreport/narrative.py",
+    "old": "not 1 <= len(claims_raw) <= MAX_CLAIMS",
+    "new": "not 1 <= len(claims_raw)",
+    "intent": "The number of claims is unbounded.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 116,
+    "name": "run-sends-unresolved-to-model",
+    "file": "src/finreport/narrative.py",
+    "old": "if answer.status != \"answered\":",
+    "new": "if False:",
+    "intent": "Unresolved answers reach the model.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 117,
+    "name": "run-attempts-unbounded-by-one",
+    "file": "src/finreport/narrative.py",
+    "old": "for attempt in range(1, max(1, max_attempts) + 1):",
+    "new": "for attempt in range(1, max(1, max_attempts) + 2):",
+    "intent": "One extra attempt beyond the bound.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 118,
+    "name": "api-error-echoes-body",
+    "file": "src/finreport/narrative.py",
+    "old": "raise ProviderUnavailable(f\"Anthropic API returned HTTP {err.code}\") from err",
+    "new": "raise ProviderUnavailable(f\"Anthropic API returned HTTP {err.code}: {err.read()!r}\") from err",
+    "intent": "The provider's error body (which could echo a credential) is exposed.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 119,
+    "name": "cli-adapter-no-timeout",
+    "file": "src/finreport/narrative.py",
+    "old": "timeout=request.timeout_seconds, cwd=scratch",
+    "new": "timeout=None, cwd=scratch",
+    "intent": "The claude CLI call is not time-bounded.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 120,
+    "name": "cli-adapter-tools-enabled",
+    "file": "src/finreport/narrative.py",
+    "old": "\"--tools\", \"\"",
+    "new": "\"--tools\", \"default\"",
+    "intent": "The model CLI runs with tools enabled.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 121,
+    "name": "scripted-wrong-article",
+    "file": "src/finreport/narrative.py",
+    "old": "art = \"an\" if b.calc.direction == \"increase\" else \"a\"",
+    "new": "art = \"a\"",
+    "intent": "Scripted grammar changes (cosmetic; detects only if tested).",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 122,
+    "name": "display-direction-always-increase",
+    "file": "src/finreport/display.py",
+    "old": "word = \"increased\" if v.direction == \"increase\" else \"decreased\"",
+    "new": "word = \"increased\"",
+    "intent": "A decrease is shown as an increase in the concise answer.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 123,
+    "name": "display-hides-weaker-verification",
+    "file": "src/finreport/display.py",
+    "old": "\"reviewed_snapshot_fact_table_only\": \"WEAKER: filing bytes not present; fact table matches the recorded hash of the reviewed snapshot\"",
+    "new": "\"reviewed_snapshot_fact_table_only\": \"full verification\"",
+    "intent": "The weaker verification level is not disclosed.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 124,
+    "name": "eval-ignores-reason-code",
+    "file": "src/finreport/answer_eval.py",
+    "old": "checks[\"non_answer\"] = ok_status and ok_code",
+    "new": "checks[\"non_answer\"] = ok_status",
+    "intent": "Reason codes are not scored.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 125,
+    "name": "eval-ignores-excerpt-support",
+    "file": "src/finreport/answer_eval.py",
+    "old": "if e.raw_amount_text not in e.amount_excerpt:",
+    "new": "if False:",
+    "intent": "Cited row text need not contain the amount.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 126,
+    "name": "eval-ignores-expected-ids",
+    "file": "src/finreport/answer_eval.py",
+    "old": "if sorted(e.evidence_id for e in a.evidence) != sorted(expected_ids):",
+    "new": "if False:",
+    "intent": "Cited IDs need not equal the expected IDs.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 127,
+    "name": "eval-ignores-percent",
+    "file": "src/finreport/answer_eval.py",
+    "old": "good_pct = v.percent_change_display == case[\"expected_percent_display\"]  # type: ignore[union-attr]",
+    "new": "good_pct = True",
+    "intent": "The percentage is not scored.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 128,
+    "name": "snapshot-skips-table-hash",
+    "file": "src/finreport/answers.py",
+    "old": "if table.source.checksum != snapshot.get(\"sha256\"):",
+    "new": "if False:",
+    "intent": "A fact table with the wrong hash passes snapshot mode.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 129,
+    "name": "snapshot-skips-accession",
+    "file": "src/finreport/answers.py",
+    "old": "if table.source.accession != snapshot.get(\"accession\"):",
+    "new": "if False:",
+    "intent": "A wrong accession passes snapshot mode.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 130,
+    "name": "snapshot-excuses-any-cache-problem",
+    "file": "src/finreport/answers.py",
+    "old": "if snapshot and check[\"problems\"] in ([\"cached_file_missing\"], [\"no_recorded_source\"]):",
+    "new": "if snapshot:",
+    "intent": "A present-but-wrong cached file is excused by the snapshot.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 131,
+    "name": "live-rejected-exits-zero",
+    "file": "src/finreport/cli.py",
+    "old": "if narrative.status == \"rejected\":\n        return 8",
+    "new": "if narrative.status == \"rejected\":\n        return 0",
+    "intent": "A rejected live narrative exits 0.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 132,
+    "name": "live-attempt-clamp-removed",
+    "file": "src/finreport/cli.py",
+    "old": "args.max_attempts = max(1, min(3, args.max_attempts))",
+    "new": "args.max_attempts = args.max_attempts",
+    "intent": "The attempt bound is not enforced.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  },
+  {
+    "id": 133,
+    "name": "answer-root-ignores-explicit-root",
+    "file": "src/finreport/cli.py",
+    "old": "if root is not None:\n        return root.resolve()",
+    "new": "if False:\n        return root.resolve()",
+    "intent": "--root is ignored.",
+    "original_observation": "finish phase (new)",
+    "batch": 5
+  }
+]

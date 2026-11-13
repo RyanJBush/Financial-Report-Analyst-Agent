@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -386,7 +386,7 @@
+         if any(c.end is None for c in ctx.columns) and not nonannual:
+             ctx.problems.append(("missing_period_evidence", f"table {table.index}: year/month/day of period end not stated"))
+         keys = [c.end if c.end is not None else c.header_text for c in ctx.columns]
+-        if len(set(keys)) != len(keys):
++        if False:
+             ctx.problems.append(("duplicate_period_columns", f"table {table.index}: the same period appears in more than one column"))
+ 
+     # scale

@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -456,7 +456,7 @@
+     alias_to_key = dict(aliases)
+     metric = rf"(?P<metric>{'|'.join(re.escape(a) for a, _ in aliases)})"
+     fy = lambda name: rf"(?:fy\s?|fiscal\s+(?:year\s+)?)(?P<{name}>\d{{4}})"  # noqa: E731
+-    ent = _entity_pattern(company)
++    ent = r"(?:\w+(?:'s)?\s+)?"
+     core = rf"(?:the\s+)?{ent}(?:consolidated\s+)?(?:total\s+)?{metric}"
+     patterns = (
+         ("lookup", rf"^what\s+(?:was|were|is)\s+{core}\s+(?:in|for|during)\s+{fy('y1')}$"),

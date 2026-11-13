@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -281,7 +281,7 @@
+ def validate_comparable(prior: Fact, current: Fact) -> list[str]:
+     """Reasons two facts must not be compared (empty list = comparable). Different filings are never silently combined."""
+     out: list[str] = []
+-    if prior.metric != current.metric:
++    if False:
+         out.append("metric_mismatch")
+     if prior.scope != current.scope:
+         out.append("scope_mismatch")

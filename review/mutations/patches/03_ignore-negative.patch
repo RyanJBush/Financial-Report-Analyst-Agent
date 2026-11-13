@@ -1,0 +1,11 @@
+--- a/src/finreport/parsing.py
++++ b/src/finreport/parsing.py
+@@ -115,7 +115,7 @@
+     if not _NUMBER_BODY_RE.match(t):
+         raise AmountError(f"not an amount: {raw!r}")
+     value = Decimal(t.replace(",", ""))
+-    return -value if negative else value
++    return value
+ 
+ 
+ @dataclass

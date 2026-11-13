@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -311,7 +311,7 @@
+     for cell in row.logical:
+         if HEADER_CELL_RE.match(cell.text):
+             years.append(cell)
+-        elif PERIOD_LABEL_RE.search(cell.text) or SCALE_RE.search(cell.text):
++        elif False:
+             continue
+         else:
+             return None

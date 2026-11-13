@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -627,7 +627,7 @@
+         for end in sorted({e for (k, e) in groups if k == spec.key}, reverse=True):
+             group = groups[(spec.key, end)]
+             plabel = period_label(end)
+-            if consolidation is None:
++            if False:
+                 issues.append(Issue(code="missing_scope_evidence", metric=spec.key, period_label=plabel,
+                                     message="no text establishing that the statements are consolidated"))
+                 continue

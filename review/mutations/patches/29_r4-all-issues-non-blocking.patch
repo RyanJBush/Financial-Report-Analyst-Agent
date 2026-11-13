@@ -1,0 +1,11 @@
+--- a/src/finreport/evaluation.py
++++ b/src/finreport/evaluation.py
+@@ -187,7 +187,7 @@
+     informational["resolved_conflicts"] = len(conflicts) - len(unresolved)
+ 
+     issues = table.get("issues", [])
+-    blocking = [i for i in issues if i.get("blocking", True)]
++    blocking = []
+     if blocking:
+         reasons.append({"code": "blocking_extraction_issues",
+                         "detail": [f"{i.get('code')} {i.get('metric')} {i.get('period_label')}" for i in blocking]})

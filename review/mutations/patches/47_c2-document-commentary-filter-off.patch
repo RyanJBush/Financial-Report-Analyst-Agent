@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -246,7 +246,7 @@
+     """(b) the first document sentence that clearly governs the financial statements' (or the company's) reporting currency."""
+     for i, block in enumerate(doc.blocks):
+         for sentence in _sentences(block):
+-            if COMMENTARY_RE.search(sentence):
++            if False:
+                 continue
+             if any(rx.search(sentence) for rx in GOVERNING_USD_RES):
+                 return CurrencyEvidence("document_statement_usd", sentence, f"text block {i}")

@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -213,7 +213,7 @@
+     if path.is_symlink():
+         out["problems"].append("cached_file_is_symlink")
+         return out
+-    if not path.is_file():
++    if False:
+         out["problems"].append("cached_file_missing")
+         return out
+     sha, size = _hash_and_size(path)

@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -553,7 +553,7 @@
+                     continue
+                 if cell.ix is not None:
+                     ix_exp = _ix_scale(cell.ix)
+-                    if isinstance(ix_exp, str):
++                    if False:
+                         issue("ix_scale_invalid", f"inline XBRL {ix_exp}", plabel)
+                         continue
+                     if cell.ix.get("sign") not in (None, "-"):

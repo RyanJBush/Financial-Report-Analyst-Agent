@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -406,7 +406,7 @@
+     # currency (USD-only MVP). Contradictions block. Affirmative evidence from the statement's own header/scale line is (a);
+     # (b) document sentences and (c) the amount's own inline-XBRL unit are resolved later, per fact. '$' alone is never evidence.
+     contradiction = next((m.group(0) for t, _ in local if (m := OTHER_CURRENCY_RE.search(t))), None)
+-    if contradiction is not None:
++    if False:
+         ctx.problems.append(("currency_contradiction",
+                              f"table {table.index}: statement text names a non-USD currency ({contradiction!r}); only USD is supported"))
+     else:

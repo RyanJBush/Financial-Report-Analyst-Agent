@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -296,7 +296,7 @@
+     if prior.period.end == current.period.end:
+         out.append("same_period")
+     days = lambda f: (f.period.end - f.period.start).days + 1  # noqa: E731
+-    if abs(days(prior) - days(current)) > PERIOD_LENGTH_TOLERANCE_DAYS:
++    if False:
+         out.append("period_length_incomparable")
+     return out
+ 

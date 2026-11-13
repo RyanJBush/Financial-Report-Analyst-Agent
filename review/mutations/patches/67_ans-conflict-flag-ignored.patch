@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -267,7 +267,7 @@
+         out.append("currency_not_usd")
+     if f.period.type != "annual_duration":
+         out.append("period_not_annual")
+-    if f.conflict_status != "none":
++    if False:
+         out.append("fact_flagged_with_conflict")
+     if any((not c.resolved) and c.metric == f.metric and c.period_label == f.period.label for c in book.table.conflicts):
+         out.append("unresolved_conflict_for_metric_period")

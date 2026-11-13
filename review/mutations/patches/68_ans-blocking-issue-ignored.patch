@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -271,7 +271,7 @@
+         out.append("fact_flagged_with_conflict")
+     if any((not c.resolved) and c.metric == f.metric and c.period_label == f.period.label for c in book.table.conflicts):
+         out.append("unresolved_conflict_for_metric_period")
+-    if any(i.blocking and i.metric == f.metric and i.period_label in (f.period.label, None) for i in book.table.issues):
++    if False:
+         out.append("blocking_extraction_issue_for_metric_period")
+     if f.source_checksum != book.table.source.checksum or f.accession != book.table.source.accession:
+         out.append("fact_source_differs_from_table_source")

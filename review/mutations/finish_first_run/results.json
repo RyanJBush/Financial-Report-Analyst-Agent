@@ -1,0 +1,862 @@
+{
+  "control": {
+    "dev": {
+      "exit": 0,
+      "summary": "541 passed in 3.05s",
+      "failed": [],
+      "imported_from": "/tmp/tmp445m677_/control/finreport/__init__.py",
+      "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+    },
+    "regression": {
+      "exit": 0,
+      "summary": "5 passed in 0.24s",
+      "failed": [],
+      "imported_from": "/tmp/tmp445m677_/control/finreport/__init__.py",
+      "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+    }
+  },
+  "results": [
+    {
+      "id": 101,
+      "name": "validator-no-period-check",
+      "file": "src/finreport/narrative.py",
+      "intent": "A claim may name a fiscal year that is not in its cited evidence.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 537 passed in 2.71s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_instruction_like_text_in_filing_fields_is_flattened_data_and_cannot_change_the_outcome",
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims4-period_not_in_cited_evidence]"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m101/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m101/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 102,
+      "name": "validator-no-number-support",
+      "file": "src/finreport/narrative.py",
+      "intent": "A number need not equal any cited amount.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "7 failed, 534 passed in 2.97s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_claim_text_with_a_hidden_second_number_is_rejected",
+          "tests/dev/test_narrative.py::test_numbers_must_come_from_the_cited_items_not_just_the_bundle",
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims3-number_not_supported_by_cited_evidence]",
+          "tests/dev/test_narrative.py::test_retry_after_rejection_then_success_records_the_earlier_violation"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m102/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m102/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 103,
+      "name": "validator-no-unit-check",
+      "file": "src/finreport/narrative.py",
+      "intent": "Unit/scale words are not checked against the evidence.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 537 passed in 3.41s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_amounts_in_thousands_must_be_stated_in_thousands",
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m103/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m103/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 104,
+      "name": "validator-no-percent-check",
+      "file": "src/finreport/narrative.py",
+      "intent": "A percentage may differ from the calculation.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 2.53s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims1-percentage_differs_from_calculation]",
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims2-percentage_differs_from_calculation]"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m104/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m104/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 105,
+      "name": "validator-no-direction-check",
+      "file": "src/finreport/narrative.py",
+      "intent": "Increase/decrease wording may contradict the calculation.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 3.09s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims0-direction_contradicts_calculation]",
+          "tests/dev/test_narrative.py::test_zero_change_is_unchanged_not_an_increase"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m105/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.21s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m105/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 106,
+      "name": "validator-no-forecast-filter",
+      "file": "src/finreport/narrative.py",
+      "intent": "Forecast wording is accepted.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 3.27s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_instruction_like_text_in_filing_fields_is_flattened_data_and_cannot_change_the_outcome",
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m106/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.14s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m106/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 107,
+      "name": "validator-no-causal-filter",
+      "file": "src/finreport/narrative.py",
+      "intent": "Causal/explanatory wording is accepted.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 538 passed in 3.17s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_model_claiming_unsupported_content_through_a_live_style_adapter_is_rejected",
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m107/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m107/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 108,
+      "name": "validator-no-framing-filter",
+      "file": "src/finreport/narrative.py",
+      "intent": "Segment/adjusted/non-GAAP framing is accepted.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 2.57s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q1_rejected_claims[Microsoft's"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m108/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m108/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 109,
+      "name": "validator-ignore-invalid-reference",
+      "file": "src/finreport/narrative.py",
+      "intent": "A citation to an ID outside the bundle is accepted.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 538 passed in 3.18s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_invalid_reference_unknown_id",
+          "tests/dev/test_narrative.py::test_irrelevant_reference_to_a_real_fact_that_is_not_in_the_bundle",
+          "tests/dev/test_narrative.py::test_wrong_year_reference_for_the_asked_year"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m109/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m109/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 110,
+      "name": "validator-allow-uncited-claim",
+      "file": "src/finreport/narrative.py",
+      "intent": "A claim with no citation is accepted.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 2.68s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_claim_without_any_citation"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m110/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m110/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 111,
+      "name": "validator-primary-value-optional",
+      "file": "src/finreport/narrative.py",
+      "intent": "The looked-up value need not be stated.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.10s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q1_primary_value_must_be_stated"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m111/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m111/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 112,
+      "name": "validator-percentage-optional",
+      "file": "src/finreport/narrative.py",
+      "intent": "The percentage need not be stated.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 2.77s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q2_rejected_claims[claims5-percentage_not_stated]"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m112/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m112/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 113,
+      "name": "validator-negative-sign-optional",
+      "file": "src/finreport/narrative.py",
+      "intent": "A negative amount may be described as positive.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 2.76s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_negative_amount_without_sign_or_word_is_rejected"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m113/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m113/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 114,
+      "name": "parser-allows-extra-top-level-keys",
+      "file": "src/finreport/narrative.py",
+      "intent": "Extra keys beside 'claims' are tolerated.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 2.75s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_malformed_outputs_are_rejected[{\"claims\":",
+          "tests/dev/test_narrative.py::test_malformed_outputs_are_rejected[{}]"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m114/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m114/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 115,
+      "name": "parser-unbounded-claim-count",
+      "file": "src/finreport/narrative.py",
+      "intent": "The number of claims is unbounded.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.14s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_too_many_claims_too_long_or_oversized_output_rejected"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m115/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m115/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 116,
+      "name": "run-sends-unresolved-to-model",
+      "file": "src/finreport/narrative.py",
+      "intent": "Unresolved answers reach the model.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "9 failed, 532 passed in 3.21s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_answer_json_exit_codes_and_contract[What",
+          "tests/dev/test_cli_answers.py::test_demo_default_root_falls_back_to_the_bundled_example",
+          "tests/dev/test_cli_answers.py::test_demo_runs_offline_from_the_example_root_and_all_three_behave",
+          "tests/dev/test_cli_answers.py::test_fact_table_without_snapshot_record_is_refused_not_trusted",
+          "tests/dev/test_cli_answers.py::test_live_on_unsupported_question_never_calls_the_provider",
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_fact_table_that_does_not_match_the_recorded_hash",
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_wrong_accession_record",
+          "tests/dev/test_narrative.py::test_q3_unsupported_forecast_never_reaches_a_model_and_has_no_narrative_claims",
+          "tests/dev/test_narrative.py::test_refused_answer_gets_the_deterministic_reason_only"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m116/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.24s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m116/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 117,
+      "name": "run-attempts-unbounded-by-one",
+      "file": "src/finreport/narrative.py",
+      "intent": "One extra attempt beyond the bound.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "3 failed, 538 passed in 3.49s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_live_attempt_bound_is_clamped",
+          "tests/dev/test_narrative.py::test_attempts_are_bounded_even_with_a_huge_limit_request",
+          "tests/dev/test_narrative.py::test_persistent_rejection_ends_rejected_with_no_narrative_text"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m117/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m117/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 118,
+      "name": "api-error-echoes-body",
+      "file": "src/finreport/narrative.py",
+      "intent": "The provider's error body (which could echo a credential) is exposed.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.22s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_anthropic_adapter_http_error_does_not_echo_the_body_or_key"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m118/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m118/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 119,
+      "name": "cli-adapter-no-timeout",
+      "file": "src/finreport/narrative.py",
+      "intent": "The claude CLI call is not time-bounded.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.29s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_claude_cli_adapter_success_and_bounded_invocation"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m119/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.22s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m119/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 120,
+      "name": "cli-adapter-tools-enabled",
+      "file": "src/finreport/narrative.py",
+      "intent": "The model CLI runs with tools enabled.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.06s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_claude_cli_adapter_success_and_bounded_invocation"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m120/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.22s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m120/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 121,
+      "name": "scripted-wrong-article",
+      "file": "src/finreport/narrative.py",
+      "intent": "Scripted grammar changes (cosmetic; detects only if tested).",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 2.72s",
+        "failed": [
+          "tests/dev/test_narrative.py::test_q2_scripted_is_validated_with_the_calculation_cited"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m121/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m121/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 122,
+      "name": "display-direction-always-increase",
+      "file": "src/finreport/display.py",
+      "intent": "A decrease is shown as an increase in the concise answer.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 2.14s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m122/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m122/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 123,
+      "name": "display-hides-weaker-verification",
+      "file": "src/finreport/display.py",
+      "intent": "The weaker verification level is not disclosed.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.18s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_demo_runs_offline_from_the_example_root_and_all_three_behave"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m123/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.14s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m123/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 124,
+      "name": "eval-ignores-reason-code",
+      "file": "src/finreport/answer_eval.py",
+      "intent": "Reason codes are not scored.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 2.66s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m124/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m124/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 125,
+      "name": "eval-ignores-excerpt-support",
+      "file": "src/finreport/answer_eval.py",
+      "intent": "Cited row text need not contain the amount.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 3.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m125/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.16s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m125/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 126,
+      "name": "eval-ignores-expected-ids",
+      "file": "src/finreport/answer_eval.py",
+      "intent": "Cited IDs need not equal the expected IDs.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 3.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m126/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m126/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 127,
+      "name": "eval-ignores-percent",
+      "file": "src/finreport/answer_eval.py",
+      "intent": "The percentage is not scored.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 3.28s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m127/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m127/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 128,
+      "name": "snapshot-skips-table-hash",
+      "file": "src/finreport/answers.py",
+      "intent": "A fact table with the wrong hash passes snapshot mode.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 2.95s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m128/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m128/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 129,
+      "name": "snapshot-skips-accession",
+      "file": "src/finreport/answers.py",
+      "intent": "A wrong accession passes snapshot mode.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.57s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_wrong_accession_record"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m129/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.20s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m129/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 130,
+      "name": "snapshot-excuses-any-cache-problem",
+      "file": "src/finreport/answers.py",
+      "intent": "A present-but-wrong cached file is excused by the snapshot.",
+      "imported_mutated_copy": true,
+      "detected": false,
+      "dev": {
+        "exit": 0,
+        "summary": "541 passed in 3.32s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m130/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.19s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m130/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 131,
+      "name": "live-rejected-exits-zero",
+      "file": "src/finreport/cli.py",
+      "intent": "A rejected live narrative exits 0.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "2 failed, 539 passed in 3.32s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_live_attempt_bound_is_clamped",
+          "tests/dev/test_cli_answers.py::test_live_rejected_narrative_exits_8_and_shows_no_model_text"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m131/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m131/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 132,
+      "name": "live-attempt-clamp-removed",
+      "file": "src/finreport/cli.py",
+      "intent": "The attempt bound is not enforced.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "1 failed, 540 passed in 3.18s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_live_attempt_bound_is_clamped"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m132/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.18s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m132/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    },
+    {
+      "id": 133,
+      "name": "answer-root-ignores-explicit-root",
+      "file": "src/finreport/cli.py",
+      "intent": "--root is ignored.",
+      "imported_mutated_copy": true,
+      "detected": true,
+      "dev": {
+        "exit": 1,
+        "summary": "4 failed, 537 passed in 3.23s",
+        "failed": [
+          "tests/dev/test_cli_answers.py::test_demo_without_any_fact_table_exits_2",
+          "tests/dev/test_cli_answers.py::test_fact_table_without_snapshot_record_is_refused_not_trusted",
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_fact_table_that_does_not_match_the_recorded_hash",
+          "tests/dev/test_cli_answers.py::test_snapshot_mode_rejects_a_wrong_accession_record"
+        ],
+        "imported_from": "/tmp/tmp445m677_/m133/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/dev"
+      },
+      "regression": {
+        "exit": 0,
+        "summary": "5 passed in 0.17s",
+        "failed": [],
+        "imported_from": "/tmp/tmp445m677_/m133/finreport/__init__.py",
+        "cmd": "/home/user/finreport-agent/.venv/bin/python -m pytest -q --tb=no -p no:cacheprovider tests/heldout"
+      },
+      "original_observation": "finish phase (new)"
+    }
+  ],
+  "history_demo": null,
+  "detected": 26,
+  "total": 33
+}

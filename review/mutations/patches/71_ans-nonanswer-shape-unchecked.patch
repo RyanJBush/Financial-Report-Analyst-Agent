@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -171,7 +171,7 @@
+             if self.question_kind == "unsupported":
+                 raise ValueError("an unsupported question cannot be answered")
+         else:
+-            if self.value is not None or self.evidence or self.calculation is not None:
++            if False:
+                 raise ValueError("an unresolved or refused answer must carry no value, no evidence and no calculation")
+             if not self.reason_code or not self.reason:
+                 raise ValueError("an unresolved or refused answer needs a reason code and a reason")

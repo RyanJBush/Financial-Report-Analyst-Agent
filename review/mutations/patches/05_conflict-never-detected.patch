@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -645,7 +645,7 @@
+                                     message=f"only non-authoritative statements contain {spec.key} {plabel}"))
+                 continue
+             basis = "US GAAP" if re.search(r"U\.S\.|US\b|United\s+States", gaap[0]) else "GAAP (jurisdiction not stated)"
+-            if len({c.occurrence.normalized_value for c in primary}) > 1:
++            if False:
+                 conflicts.append(Conflict(
+                     kind="incompatible_primary_duplicates", metric=spec.key, period_label=plabel, scope="consolidated",
+                     accounting_basis=basis, resolved=False,

@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -218,7 +218,7 @@
+         return out
+     sha, size = _hash_and_size(path)
+     out["actual"] = {"filename": path.name, "byte_count": size, "sha256": sha}
+-    if path.name != rec_name:
++    if False:
+         out["problems"].append("filename_mismatch")
+     if size != rec_size:
+         out["problems"].append("byte_count_mismatch")

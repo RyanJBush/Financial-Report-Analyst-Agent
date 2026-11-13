@@ -1,0 +1,11 @@
+--- a/src/finreport/cli.py
++++ b/src/finreport/cli.py
+@@ -98,7 +98,7 @@
+     if "cached_file_missing" in sv["problems"] or "cached_file_is_symlink" in sv["problems"]:
+         print(f"cached file missing or not a regular file: {path}", file=sys.stderr)
+         return 2
+-    if not sv["verified"]:
++    if False:
+         print(f"cached source does not match the manifest ({', '.join(sv['problems'])}): recorded {sv['recorded']}, actual {sv['actual']}", file=sys.stderr)
+         return 5
+     checksum = sv["actual"]["sha256"]

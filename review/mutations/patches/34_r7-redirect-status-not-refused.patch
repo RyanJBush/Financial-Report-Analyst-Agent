@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -269,7 +269,7 @@
+             if candidate.status == 200:
+                 resp = candidate
+                 break
+-            if 300 <= candidate.status < 400:
++            if False:
+                 raise InvalidFiling(
+                     f"HTTP {candidate.status} redirect from {target.url} to {candidate.headers.get('location', '<no Location header>')!r}; "
+                     "redirects are refused and not followed")

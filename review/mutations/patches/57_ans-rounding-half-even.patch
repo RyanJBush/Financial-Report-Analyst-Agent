@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -315,7 +315,7 @@
+ 
+ def percent_display(value: Decimal) -> str:
+     with localcontext(Context(prec=80)):
+-        return f"{value.quantize(PERCENT_DISPLAY_PLACES, rounding=ROUND_HALF_UP)}%"
++        return f"{value.quantize(PERCENT_DISPLAY_PLACES, rounding=ROUND_HALF_EVEN)}%"
+ 
+ 
+ def format_usd(normalized: Decimal, scale: int | None) -> str:

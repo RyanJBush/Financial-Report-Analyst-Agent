@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -170,7 +170,7 @@
+     if content_type not in ACCEPTED_CONTENT_TYPES:
+         raise InvalidFiling(f"unexpected content-type {content_type!r}")
+     requested, final = urlparse(target.url), urlparse(resp.final_url)
+-    if (final.scheme, final.netloc, final.path) != (requested.scheme, requested.netloc, requested.path):
++    if False:
+         raise InvalidFiling(f"redirected away from requested filing: {resp.final_url}")
+     validate_filing_body(resp.body, target, min_bytes)
+ 

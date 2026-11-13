@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -246,7 +246,7 @@
+     if not refresh and cache_is_valid(root, manifest):
+         return manifest  # zero requests
+ 
+-    user_agent = get_user_agent(env)  # raises before any transport call
++    user_agent = "x"
+     target = manifest.target
+     if urlparse(target.url).scheme != "https":
+         raise InvalidFiling("only https URLs are fetched")

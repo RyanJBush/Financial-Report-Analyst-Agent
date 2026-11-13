@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -310,7 +310,7 @@
+         return None, "prior_period_negative", ("Percentage change is withheld because the prior-period amount is negative, so a "
+                                                "percentage of a negative base is not meaningful. The absolute change is reported.")
+     with localcontext(Context(prec=PERCENT_PRECISION, rounding=ROUND_HALF_EVEN)):
+-        return (current - prior) / prior * 100, None, None
++        return (prior - current) / prior * 100, None, None
+ 
+ 
+ def percent_display(value: Decimal) -> str:

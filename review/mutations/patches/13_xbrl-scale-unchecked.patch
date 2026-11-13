@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -559,7 +559,7 @@
+                     if cell.ix.get("sign") not in (None, "-"):
+                         issue("ix_sign_invalid", f"inline XBRL sign={cell.ix.get('sign')!r} is not '-' or absent", plabel)
+                         continue
+-                    if ix_exp != _scale_exponent(ctx.scale_multiplier):
++                    if False:
+                         issue("ix_scale_mismatch",
+                               f"inline XBRL scale={ix_exp} vs statement scale 10^{_scale_exponent(ctx.scale_multiplier)}", plabel)
+                         continue

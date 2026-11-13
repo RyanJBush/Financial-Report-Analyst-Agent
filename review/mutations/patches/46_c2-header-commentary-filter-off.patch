@@ -1,0 +1,11 @@
+--- a/src/finreport/extract.py
++++ b/src/finreport/extract.py
+@@ -232,7 +232,7 @@
+ 
+ def local_usd_statement(text: str) -> bool:
+     """(a) True if a header/heading/scale-line text explicitly states USD and is not commentary."""
+-    if COMMENTARY_RE.search(text):
++    if False:
+         return False
+     return bool(HEADER_USD_PAREN_RE.search(text) or HEADER_USD_VERB_RE.search(text))
+ 

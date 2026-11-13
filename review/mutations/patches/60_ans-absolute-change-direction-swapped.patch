@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -331,7 +331,7 @@
+ 
+ def build_calculation(prior: Fact, current: Fact) -> CalculationRecord:
+     p, c = prior.normalized_value, current.normalized_value
+-    diff = c - p
++    diff = p - c
+     pct, code, why = percent_change(p, c)
+     steps = [f"absolute_change = current - prior = {c} - {p} = {diff}"]
+     if pct is not None:

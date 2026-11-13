@@ -1,0 +1,11 @@
+--- a/src/finreport/evaluation.py
++++ b/src/finreport/evaluation.py
+@@ -181,7 +181,7 @@
+ 
+     conflicts = table.get("conflicts", [])
+     unresolved = [c for c in conflicts if not c.get("resolved", False)]
+-    if unresolved:
++    if False:
+         reasons.append({"code": "unresolved_conflicts",
+                         "detail": [f"{c.get('kind')} {c.get('metric')} {c.get('period_label')}" for c in unresolved]})
+     informational["resolved_conflicts"] = len(conflicts) - len(unresolved)

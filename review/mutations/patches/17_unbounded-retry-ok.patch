@@ -1,0 +1,11 @@
+--- a/src/finreport/ingest.py
++++ b/src/finreport/ingest.py
+@@ -255,7 +255,7 @@
+ 
+     resp: HttpResponse | None = None
+     last_error = "no attempt made"
+-    for attempt in range(1, max_attempts + 1):
++    for attempt in range(1, max_attempts + 5):
+         limiter.wait()
+         try:
+             candidate = transport(target.url, headers, timeout)

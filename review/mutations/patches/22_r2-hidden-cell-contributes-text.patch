@@ -1,0 +1,11 @@
+--- a/src/finreport/parsing.py
++++ b/src/finreport/parsing.py
+@@ -222,7 +222,7 @@
+     cells: list[Cell] = []
+     row_hidden = _hidden_between(tr, table)
+     for c_idx, td in enumerate(tr.find_all(["td", "th"], recursive=False)):
+-        if row_hidden or is_hidden(td):
++        if False:
+             cells.append(Cell(index=c_idx, text="", element_id=td.get("id"), ix=None, hidden_text_removed=True))
+             continue
+         text, removed, ambiguous = visible_text(td)

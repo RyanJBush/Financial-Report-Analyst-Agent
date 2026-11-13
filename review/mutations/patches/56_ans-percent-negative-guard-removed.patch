@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -306,7 +306,7 @@
+     if prior == 0:
+         return None, "prior_period_zero", ("Percentage change is withheld because the prior-period amount is zero, so the ratio is "
+                                            "undefined. The absolute change is reported.")
+-    if prior < 0:
++    if False:
+         return None, "prior_period_negative", ("Percentage change is withheld because the prior-period amount is negative, so a "
+                                                "percentage of a negative base is not meaningful. The absolute change is reported.")
+     with localcontext(Context(prec=PERCENT_PRECISION, rounding=ROUND_HALF_EVEN)):

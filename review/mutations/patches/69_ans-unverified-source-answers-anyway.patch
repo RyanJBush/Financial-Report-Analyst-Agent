@@ -1,0 +1,11 @@
+--- a/src/finreport/answers.py
++++ b/src/finreport/answers.py
+@@ -538,7 +538,7 @@
+     q = parse_question(text, book.company)
+     if q.kind == "unsupported":
+         return _non_answer(q, book, "unresolved", q.reason_code or "unsupported_question", _unsupported_reason(q, book))
+-    if not book.verified:
++    if False:
+         return _non_answer(q, book, "refused", "source_not_verified",
+                            "The evidence is not verified against the cached source: " + ", ".join(book.problems) + ".")
+     assert q.metric is not None
