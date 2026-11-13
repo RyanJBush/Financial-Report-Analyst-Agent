@@ -1,0 +1,305 @@
+{
+  "classification": "post-implementation question evaluation; exposed after first execution; not an independent accuracy estimate",
+  "fixture_sha256": "908ba782bbb56519dc876d7d2572122c2a0e156a698b587ff3683a6aa9912850",
+  "correct": 12,
+  "total": 12,
+  "cases": [
+    {
+      "id": "REV_2023_lookup",
+      "question": "What was revenue in FY2023?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "211915000000"
+        ],
+        "periods": [
+          "FY2023"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "REV_2023"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2023 consolidated revenue was USD 211,915 million [REV_2023]."
+    },
+    {
+      "id": "REV_2024_lookup",
+      "question": "What was revenue in FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "245122000000"
+        ],
+        "periods": [
+          "FY2024"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "REV_2024"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2024 consolidated revenue was USD 245,122 million [REV_2024]."
+    },
+    {
+      "id": "REV_change",
+      "question": "How did revenue change from FY2023 to FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "211915000000",
+          "245122000000"
+        ],
+        "periods": [
+          "FY2023",
+          "FY2024"
+        ],
+        "currencies": [
+          "USD",
+          "USD"
+        ],
+        "scopes": [
+          "consolidated",
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "REV_2023",
+          "REV_2024"
+        ],
+        "absolute_change": "33207000000",
+        "percent_change": "15.67"
+      },
+      "summary": "FY2023 consolidated revenue was USD 211,915 million [REV_2023]. FY2024 consolidated revenue was USD 245,122 million [REV_2024]. The change was USD +33,207 million; 15.67% [REV_2023, REV_2024; CALC_CHANGE]."
+    },
+    {
+      "id": "NI_2023_lookup",
+      "question": "What was net income in FY2023?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "72361000000"
+        ],
+        "periods": [
+          "FY2023"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "NI_2023"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2023 consolidated net income was USD 72,361 million [NI_2023]."
+    },
+    {
+      "id": "NI_2024_lookup",
+      "question": "What was net income in FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "88136000000"
+        ],
+        "periods": [
+          "FY2024"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "NI_2024"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2024 consolidated net income was USD 88,136 million [NI_2024]."
+    },
+    {
+      "id": "NI_change",
+      "question": "How did net income change from FY2023 to FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "72361000000",
+          "88136000000"
+        ],
+        "periods": [
+          "FY2023",
+          "FY2024"
+        ],
+        "currencies": [
+          "USD",
+          "USD"
+        ],
+        "scopes": [
+          "consolidated",
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "NI_2023",
+          "NI_2024"
+        ],
+        "absolute_change": "15775000000",
+        "percent_change": "21.80"
+      },
+      "summary": "FY2023 consolidated net income was USD 72,361 million [NI_2023]. FY2024 consolidated net income was USD 88,136 million [NI_2024]. The change was USD +15,775 million; 21.80% [NI_2023, NI_2024; CALC_CHANGE]."
+    },
+    {
+      "id": "OCF_2023_lookup",
+      "question": "What was operating cash flow in FY2023?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "87582000000"
+        ],
+        "periods": [
+          "FY2023"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "OCF_2023"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2023 consolidated operating cash flow was USD 87,582 million [OCF_2023]."
+    },
+    {
+      "id": "OCF_2024_lookup",
+      "question": "What was operating cash flow in FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "118548000000"
+        ],
+        "periods": [
+          "FY2024"
+        ],
+        "currencies": [
+          "USD"
+        ],
+        "scopes": [
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "OCF_2024"
+        ],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "FY2024 consolidated operating cash flow was USD 118,548 million [OCF_2024]."
+    },
+    {
+      "id": "OCF_change",
+      "question": "How did operating cash flow change from FY2023 to FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "answered",
+        "values": [
+          "87582000000",
+          "118548000000"
+        ],
+        "periods": [
+          "FY2023",
+          "FY2024"
+        ],
+        "currencies": [
+          "USD",
+          "USD"
+        ],
+        "scopes": [
+          "consolidated",
+          "consolidated"
+        ],
+        "evidence_ids": [
+          "OCF_2023",
+          "OCF_2024"
+        ],
+        "absolute_change": "30966000000",
+        "percent_change": "35.36"
+      },
+      "summary": "FY2023 consolidated operating cash flow was USD 87,582 million [OCF_2023]. FY2024 consolidated operating cash flow was USD 118,548 million [OCF_2024]. The change was USD +30,966 million; 35.36% [OCF_2023, OCF_2024; CALC_CHANGE]."
+    },
+    {
+      "id": "unsupported_0",
+      "question": "What will revenue be in FY2027?",
+      "correct": true,
+      "actual": {
+        "status": "unresolved",
+        "values": [],
+        "periods": [],
+        "currencies": [],
+        "scopes": [],
+        "evidence_ids": [],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "Unresolved: forecast_not_supported."
+    },
+    {
+      "id": "unsupported_1",
+      "question": "What was Azure revenue in FY2024?",
+      "correct": true,
+      "actual": {
+        "status": "unresolved",
+        "values": [],
+        "periods": [],
+        "currencies": [],
+        "scopes": [],
+        "evidence_ids": [],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "Unresolved: unsupported_question."
+    },
+    {
+      "id": "unsupported_2",
+      "question": "What was revenue in FY2022?",
+      "correct": true,
+      "actual": {
+        "status": "unresolved",
+        "values": [],
+        "periods": [],
+        "currencies": [],
+        "scopes": [],
+        "evidence_ids": [],
+        "absolute_change": null,
+        "percent_change": null
+      },
+      "summary": "Unresolved: missing_or_ambiguous_evidence."
+    }
+  ]
+}

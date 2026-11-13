@@ -1,0 +1,5 @@
+* text=auto eol=lf
+evaluation/expected_facts.json -text
+tests/heldout/fixtures/*.html -text
+review/c1c2/inputs/* -text
+data/filing.html.gz binary

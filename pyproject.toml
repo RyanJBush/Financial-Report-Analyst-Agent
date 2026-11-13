@@ -4,11 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "finreport-agent"
-version = "1.0.0"
-description = "Evidence-linked financial report analyst MVP: source-linked fact extraction, deterministic Q&A with calculation records, validated model narrative (one SEC 10-K)"
-readme = "README.md"
-license = { text = "MIT" }
-authors = [{ name = "Ryan J. Bush" }]
+version = "0.1.0"
+description = "Evidence-linked annual filing analysis with deterministic calculations and validated citations"
 requires-python = ">=3.11"
 dependencies = [
   "pydantic>=2.6",

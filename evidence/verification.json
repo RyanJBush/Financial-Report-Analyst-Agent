@@ -1,0 +1,47 @@
+{
+  "verified_at": "2026-11-13",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux"
+  },
+  "base": "Reviewed milestone-1 revision 3 plus new answer and narrative layer implemented in this session; milestone-2 ZIP unavailable.",
+  "tests": {
+    "dev": 356,
+    "exposed_regression": 5,
+    "total": 361
+  },
+  "source_facts": {
+    "correct": 6,
+    "total": 6,
+    "conflicts": 0,
+    "issues": 0,
+    "exclusions": 7
+  },
+  "source_audit": {
+    "correct": 6,
+    "total": 6
+  },
+  "answer_cases": {
+    "correct": 12,
+    "total": 12
+  },
+  "live_model": {
+    "adapter": "ollama",
+    "successful_runs": 0,
+    "attempts": 1,
+    "observed_result": "Connection refused at 127.0.0.1:11434; CLI exit 2; no model output."
+  },
+  "manual_support_review": {
+    "outputs_reviewed": 12,
+    "supported_or_appropriately_unresolved": 12,
+    "adapter": "scripted"
+  },
+  "pending": [
+    "Successful local-model run and manual support review",
+    "Independent sealed extraction evaluation",
+    "Comprehensive 10-K/A search",
+    "Independent confirmation of source acquisition and index-byte discrepancy",
+    "Cumulative actual effort not recorded"
+  ],
+  "hosted_ci": "pending at time of this local snapshot; consult repository Actions for the current result"
+}

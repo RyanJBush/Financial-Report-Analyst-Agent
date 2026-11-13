@@ -1,21 +1,14 @@
-# environments and caches
 .venv/
 venv/
 __pycache__/
+*.py[cod]
 *.egg-info/
 .pytest_cache/
-build/
-dist/
-# secrets and local configuration - never commit
 .env
 .env.*
-*.pem
-*.key
-# raw SEC filing cache and local extraction outputs (retrieve or import the filing; see README)
+!.env.example
+output/
 data/cache/
-/output/
-# local review packets, captures and scratch
-review_packets/
+dist/
+build/
 *.zip
-*.tmp
-answer_eval_report.json
