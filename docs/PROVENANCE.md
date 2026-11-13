@@ -29,3 +29,18 @@ functional-currency or FX commentary is not evidence. Conflicting evidence block
 digits, displayed to two decimals with ROUND_HALF_UP, and only when the prior amount is positive (otherwise the absolute change is
 returned with an explicit reason). Facts are compared only if metric, scope, accounting basis, currency, and source filing match and
 they are distinct annual periods of comparable length.
+
+
+## Access and reuse guidance rechecked November 13, 2026
+
+The [SEC access guide](https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data)
+states a maximum of 10 requests per second, asks callers to declare their User-Agent,
+and asks that scripts download only what is needed. This tool caches files, limits
+requests to one per second and requires the operator to provide a real contact string.
+No contact address is invented or committed.
+
+The [SEC reuse FAQ](https://www.sec.gov/about/webmaster-frequently-asked-questions)
+states that EDGAR public filing content is free to access and reuse. This repository
+contains facts, excerpts and hashes; the software license does not claim ownership
+of Microsoft's filing. This guidance recheck is separate from source acquisition
+and does not resolve the original download provenance or amendment search.

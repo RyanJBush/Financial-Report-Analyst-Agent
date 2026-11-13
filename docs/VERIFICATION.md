@@ -1,5 +1,7 @@
 # What was verified, how, and what was not
 
+**Independent follow-up:** [Codex completion review](INDEPENDENT_REVIEW.md) reproduced the offline tests and 40 cases, reran extraction on the received HTML, and confirmed hosted CI. The build-session record below is retained with its original scope.
+
 Everything in this file was observed by running the stated command in this project's build session (2026-11-13). "Mine" means
 produced by the AI assistant that wrote the code; it has not been independently reproduced.
 
@@ -58,5 +60,5 @@ model by design). See `docs/RUNS.md`. Manual review of 7 claims (4 live, 3 scrip
 * **Amendment (10-K/A) search**: not performed (no SEC access from the build environment).
 * **Re-download of the filing from SEC**: not performed; the reviewed bytes were supplied by the project owner. Equivalence with the
   SEC-served file is unproven (see `PROVENANCE.md`).
-* **Independent reproduction** of the mutation results, the answer cases or the manual review: not done.
+* **Independent mutation reproduction**: not done. Tests, frozen answer cases, source extraction and recorded narrative support were independently reviewed afterward; see `INDEPENDENT_REVIEW.md`.
 * Python versions other than 3.11 and 3.13, and operating systems other than Linux, were not tested.

@@ -1,5 +1,9 @@
 # Financial Report Analyst Agent
 
+[![CI](https://github.com/RyanJBush/financial-report-analyst-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/RyanJBush/financial-report-analyst-agent/actions/workflows/ci.yml)
+
+Independent completion review: [observed results and limitations](docs/INDEPENDENT_REVIEW.md).
+
 An evidence-linked analyst MVP for **one** SEC filing. It answers three kinds of questions about Microsoft's FY2024 Form 10-K from a
 verified, source-linked fact table, shows the calculation and the supporting excerpts, says **"unresolved"** instead of guessing,
 and checks any model-written narrative against the verified facts before showing it.
@@ -158,7 +162,7 @@ Summarised here; full text in [`docs/PROVENANCE.md`](docs/PROVENANCE.md).
   always rejected). A claim can pass while being awkwardly worded, and a clearly fine sentence can be rejected.
 * **Provenance of the filing bytes is the user's supply, not an observed SEC download**; the clean-clone demo does not re-verify them.
 * **Self-authored evaluation.** The answer cases, mutation runs and narrative review were produced by the same assistant that wrote the
-  code. An independent reproduction has not been done.
+  code. Independent execution of the tests and 40 answer cases is recorded in `docs/INDEPENDENT_REVIEW.md`; the mutation results remain author-reported.
 * Fiscal years are matched by same month/day anniversary; 52/53-week calendars with drifting year-ends are reported as not found.
 
 ## Demo script (about 90 seconds)
