@@ -80,7 +80,7 @@ All numbers below were produced by commands in this repository and are reproduci
 | Check | Result | Evidence |
 |---|---|---|
 | Hosted CI (GitHub Actions) | see the Actions tab; the observed result for the release commit is recorded in [`docs/VERIFICATION.md`](docs/VERIFICATION.md) | `.github/workflows/ci.yml` |
-| Development tests (offline) | 548 passed | `python -m pytest -q` |
+| Development tests (offline) | 547 passed, 1 skipped on a clean clone on Python 3.11 and 3.13 (the skipped test re-verifies the real filing bytes, which are not in the repository; with the file present 548 pass) | `python -m pytest -q` |
 | Regression fixtures | 5 passed | `python -m pytest -q tests/heldout` |
 | Real-filing extraction (6 facts) | 6/6 numeric match + machine acceptance, recorded from a run on the user-supplied filing bytes | `examples/msft_fy2024/output/evaluation_report.json` |
 | Frozen answer cases (40) | value 16/16 · calculation 8/8 · citation validity 40/40 · appropriate non-answers 24/24 (0 false answers, 0 false non-answers) · scripted-narrative validation 16/16 | [`evaluation/results/`](evaluation/results/) |
@@ -188,7 +188,7 @@ data, not redistributed here; only extracted facts, short excerpts and hashes ar
 
 * Built an evidence-linked financial-filing analyst in Python (pydantic, `Decimal`): extracts six source-linked facts from one Microsoft FY2024
   10-K and answers lookup, period-change and unsupported-forecast questions with cited evidence IDs, calculation records and explicit
-  "unresolved" results; 548 offline tests plus 40 self-authored frozen cases pass, with CI on Python 3.11 and 3.13.
+  "unresolved" results; 547 offline tests plus 40 self-authored frozen cases pass on Python 3.11 and 3.13 (hosted-CI status: see docs/VERIFICATION.md).
 * Added a validated LLM narrative layer (scripted adapter, Claude CLI adapter run live, Anthropic API adapter unit-tested) that rejects model
   text whose numbers, periods, units, direction or citations do not match the verified facts; checked with 33/33 self-run mutation tests
   and a manual review of 4 live-model claims. Scope: one filing; not a claim of general accuracy.
