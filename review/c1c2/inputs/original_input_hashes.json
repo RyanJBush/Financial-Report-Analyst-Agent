@@ -1,0 +1,22 @@
+{
+  "numbers_doc_no_governing_currency.html": {
+    "sha256": "2a9bb225c9bb83fa5a78802db51aeb30e3f47d74e06701101f6e6a5a1786703f",
+    "bytes": 1421
+  },
+  "negative_unrelated_usd_mention.html": {
+    "sha256": "0367db03026adbb69543cf63bd8cba5d9c7e70cf405e6bd765f0a8d3b7aed31d",
+    "bytes": 1466
+  },
+  "negative_debt_denominated_usd.html": {
+    "sha256": "21554caae0b54ea834da999f98e3a6e6f149a4a464900d54e04ff000df40cdc6",
+    "bytes": 1468
+  },
+  "standard_doc_rev2.html": {
+    "sha256": "055f84a541d9d120cebfd2a9bad8d5fdf531d0a9e280ac3ed42d54623a9839fd",
+    "bytes": 1766
+  },
+  "make_doc_income_cashflow_rev2.html": {
+    "sha256": "d1d0220bd5d8fa2111435bdb8e701f38bd3c31b3f7650317f3ec6084d1bf10f7",
+    "bytes": 1396
+  }
+}

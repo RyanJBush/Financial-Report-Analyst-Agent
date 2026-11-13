@@ -1,0 +1,67 @@
+{
+  "note": "Held-out cases authored after the extractor and dev tests existed, by the same author. Expectations below were written before this suite was first run. Synthetic companies; numbers are fictional.",
+  "cases": [
+    {
+      "file": "h1_titlecase_fulldates.html", "company": "Alphacorp", "fye": "2024-06-30",
+      "facts": [
+        {"id": "REV_2024", "reported": "5000", "multiplier": 1000000, "end": "2024-06-30", "page": 31},
+        {"id": "REV_2023", "reported": "4800", "multiplier": 1000000, "end": "2023-06-30", "page": 31},
+        {"id": "NI_2024", "reported": "700", "multiplier": 1000000, "end": "2024-06-30", "page": 31},
+        {"id": "NI_2023", "reported": "650", "multiplier": 1000000, "end": "2023-06-30", "page": 31},
+        {"id": "OCF_2024", "reported": "1100", "multiplier": 1000000, "end": "2024-06-30", "page": 34},
+        {"id": "OCF_2023", "reported": "-1200", "multiplier": 1000000, "end": "2023-06-30", "page": 34}
+      ],
+      "conflicts": [], "issue_codes": [], "exclusion_reasons": []
+    },
+    {
+      "file": "h2_december_thousands_loss.html", "company": "Betacorp", "fye": "2023-12-31",
+      "facts": [
+        {"id": "REV_2023", "reported": "12500", "multiplier": 1000, "end": "2023-12-31", "page": null},
+        {"id": "REV_2022", "reported": "11000", "multiplier": 1000, "end": "2022-12-31", "page": null},
+        {"id": "NI_2023", "reported": "-3400", "multiplier": 1000, "end": "2023-12-31", "page": null},
+        {"id": "NI_2022", "reported": "1200", "multiplier": 1000, "end": "2022-12-31", "page": null},
+        {"id": "OCF_2023", "reported": "-800", "multiplier": 1000, "end": "2023-12-31", "page": null},
+        {"id": "OCF_2022", "reported": "950", "multiplier": 1000, "end": "2022-12-31", "page": null}
+      ],
+      "conflicts": [], "issue_codes": [], "exclusion_reasons": []
+    },
+    {
+      "file": "h3_noise_tables.html", "company": "Gammacorp", "fye": "2024-06-30",
+      "facts": [
+        {"id": "REV_2024", "reported": "1500", "multiplier": 1000000, "end": "2024-06-30", "page": 56},
+        {"id": "REV_2023", "reported": "1300", "multiplier": 1000000, "end": "2023-06-30", "page": 56},
+        {"id": "NI_2024", "reported": "300", "multiplier": 1000000, "end": "2024-06-30", "page": 56},
+        {"id": "NI_2023", "reported": "250", "multiplier": 1000000, "end": "2023-06-30", "page": 56},
+        {"id": "OCF_2024", "reported": "600", "multiplier": 1000000, "end": "2024-06-30", "page": 59},
+        {"id": "OCF_2023", "reported": "500", "multiplier": 1000000, "end": "2023-06-30", "page": 59}
+      ],
+      "conflicts": [], "issue_codes": [],
+      "exclusion_reasons": ["statement_not_identified", "scope_segment_differs_from_consolidated"]
+    },
+    {
+      "file": "h4_incompatible_ocf_duplicate.html", "company": "Deltacorp", "fye": "2024-06-30",
+      "facts": [
+        {"id": "REV_2024", "reported": "3000", "multiplier": 1000000, "end": "2024-06-30", "page": null},
+        {"id": "REV_2023", "reported": "2700", "multiplier": 1000000, "end": "2023-06-30", "page": null},
+        {"id": "NI_2024", "reported": "500", "multiplier": 1000000, "end": "2024-06-30", "page": null},
+        {"id": "NI_2023", "reported": "450", "multiplier": 1000000, "end": "2023-06-30", "page": null},
+        {"id": "OCF_2023", "reported": "700", "multiplier": 1000000, "end": "2023-06-30", "page": null}
+      ],
+      "absent": ["OCF_2024"],
+      "conflicts": [["incompatible_primary_duplicates", "operating_cash_flow", "FY2024"]],
+      "issue_codes": [], "exclusion_reasons": []
+    },
+    {
+      "file": "h5_layout_variant.html", "company": "Epsiloncorp", "fye": "2024-06-30",
+      "facts": [
+        {"id": "REV_2024", "reported": "2000", "multiplier": 1000000, "end": "2024-06-30", "page": 56},
+        {"id": "REV_2023", "reported": "1800", "multiplier": 1000000, "end": "2023-06-30", "page": 56},
+        {"id": "NI_2024", "reported": "-150", "multiplier": 1000000, "end": "2024-06-30", "page": 56},
+        {"id": "NI_2023", "reported": "90", "multiplier": 1000000, "end": "2023-06-30", "page": 56},
+        {"id": "OCF_2024", "reported": "310", "multiplier": 1000000, "end": "2024-06-30", "page": 59},
+        {"id": "OCF_2023", "reported": "275", "multiplier": 1000000, "end": "2023-06-30", "page": 59}
+      ],
+      "conflicts": [], "issue_codes": [], "exclusion_reasons": []
+    }
+  ]
+}

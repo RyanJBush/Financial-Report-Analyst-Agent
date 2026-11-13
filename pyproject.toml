@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finreport-agent"
+version = "1.0.0"
+description = "Evidence-linked financial report analyst MVP: source-linked fact extraction, deterministic Q&A with calculation records, validated model narrative (one SEC 10-K)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Ryan J. Bush" }]
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.6",
+  "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+finreport = "finreport.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+# Default run = tests/dev only. The five fixtures under tests/heldout are development/regression
+# evidence (see tests/heldout/EXPOSURE_LOG.md); run them explicitly:
+#   pytest tests/heldout
+testpaths = ["tests/dev"]
+addopts = "-ra"

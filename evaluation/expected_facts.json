@@ -1,0 +1,123 @@
+{
+  "expectation_version": "1",
+  "source": {
+    "company": "Microsoft Corporation",
+    "cik": "0000789019",
+    "form": "10-K",
+    "accession": "0000950170-24-087843",
+    "fiscal_period_end": "2024-06-30",
+    "filing_date": "2024-07-30",
+    "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm"
+  },
+  "shared": {
+    "currency": "USD",
+    "reported_scale": "millions",
+    "scale_multiplier": 1000000,
+    "scope": "Microsoft Corporation and subsidiaries, consolidated",
+    "accounting_basis": "US GAAP"
+  },
+  "periods": {
+    "FY2024": {
+      "start": "2023-07-01",
+      "end": "2024-06-30",
+      "type": "annual_duration"
+    },
+    "FY2023": {
+      "start": "2022-07-01",
+      "end": "2023-06-30",
+      "type": "annual_duration"
+    }
+  },
+  "facts": [
+    {
+      "evidence_id": "REV_2024",
+      "metric": "revenue",
+      "original_label": "Total revenue",
+      "reported_value": 245122,
+      "normalized_value_usd": 245122000000,
+      "period": "FY2024",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Income Statements",
+        "printed_page": 56,
+        "row": "Total revenue",
+        "column": "2024"
+      }
+    },
+    {
+      "evidence_id": "REV_2023",
+      "metric": "revenue",
+      "original_label": "Total revenue",
+      "reported_value": 211915,
+      "normalized_value_usd": 211915000000,
+      "period": "FY2023",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Income Statements",
+        "printed_page": 56,
+        "row": "Total revenue",
+        "column": "2023"
+      }
+    },
+    {
+      "evidence_id": "NI_2024",
+      "metric": "net_income",
+      "original_label": "Net income",
+      "reported_value": 88136,
+      "normalized_value_usd": 88136000000,
+      "period": "FY2024",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Income Statements",
+        "printed_page": 56,
+        "row": "Net income",
+        "column": "2024"
+      }
+    },
+    {
+      "evidence_id": "NI_2023",
+      "metric": "net_income",
+      "original_label": "Net income",
+      "reported_value": 72361,
+      "normalized_value_usd": 72361000000,
+      "period": "FY2023",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Income Statements",
+        "printed_page": 56,
+        "row": "Net income",
+        "column": "2023"
+      }
+    },
+    {
+      "evidence_id": "OCF_2024",
+      "metric": "operating_cash_flow",
+      "original_label": "Net cash from operations",
+      "reported_value": 118548,
+      "normalized_value_usd": 118548000000,
+      "period": "FY2024",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Cash Flows Statements",
+        "printed_page": 59,
+        "row": "Net cash from operations",
+        "column": "2024"
+      }
+    },
+    {
+      "evidence_id": "OCF_2023",
+      "metric": "operating_cash_flow",
+      "original_label": "Net cash from operations",
+      "reported_value": 87582,
+      "normalized_value_usd": 87582000000,
+      "period": "FY2023",
+      "locator": {
+        "section": "Part II, Item 8",
+        "statement": "Cash Flows Statements",
+        "printed_page": 59,
+        "row": "Net cash from operations",
+        "column": "2023"
+      }
+    }
+  ]
+}
