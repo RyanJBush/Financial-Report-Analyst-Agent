@@ -15,4 +15,4 @@ Not recorded and not claimed: time spent in earlier milestone sessions (ingestio
 whether the owner's earlier 30-hour cap was reached was not verified.
 
 Time was not the binding constraint in this phase. The one external blocker was GitHub write access: the repository did not exist when
-the work was ready to publish and the session could not create it; it was created by the owner and then attached and pushed to.
+the work was ready to publish and the session could not create it; it was created outside this session (by the owner, as far as the session can tell), then attached and pushed to.
