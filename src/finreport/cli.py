@@ -1,17 +1,25 @@
-"""Command line: init | fetch | import-file | extract | evaluate.
+"""Command line: init | fetch | import-file | extract | evaluate | ask | answer | demo | live | eval-answers.
 
 Exit codes: 0 ok (for evaluate: ACCEPTED by machine checks); 1 evaluation rejected; 2 missing input; 3 SEC_USER_AGENT missing;
 4 access denied or response rejected as not-the-filing; 5 checksum/cache mismatch;
-6 extraction produced issues or conflicts; 7 network failure after bounded retries.
+6 extraction produced issues or conflicts; 7 network failure after bounded retries (for `live`: model provider unavailable);
+8 `live`: the model's narrative was rejected by validation (the structured answer is still printed).
+`ask`/`answer`/`live`: 0 answered, 1 unresolved, 5 refused, 2 no usable fact table. `demo`: 0 only if all three demo questions behave as specified.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
+from finreport.answer_eval import evaluate_answers, render_report
+from finreport.answers import FactBookError, _load_snapshot, answer_question, answer_to_json, load_factbook
+from finreport.display import render
+from finreport.narrative import AnthropicApiAdapter, ClaudeCliAdapter, ScriptedAdapter, run_narrative
 from finreport.evaluation import evaluate_files
 from finreport.extract import extract_facts
 from finreport.ingest import DEFAULT_MIN_BYTES, IngestError, cache_path, fetch_filing, import_external_file, verify_cached_source
@@ -141,46 +149,143 @@ def cmd_evaluate(root: Path, _args: argparse.Namespace) -> int:
 
 
 def cmd_ask(root: Path, args: argparse.Namespace) -> int:
-    from finreport.answers import answer_question, load_verified_table, validate_answer
-    from finreport.narrative import ollama, render, scripted, validate_narrative
+    """Answer one question from the verified fact table. Prints the structured answer as JSON.
+
+    Exit: 0 answered; 1 unresolved (not answerable from this evidence); 5 refused (evidence not verified); 2 no usable fact table.
+    This command never reads the evaluation expectations."""
     try:
-        table = load_verified_table(root)
-        answer = answer_question(args.question,table)
-        if not validate_answer(answer,table):
-            raise ValueError('answer validation failed')
-        # Unsupported questions never need a model request.
-        narrative = (ollama(answer,args.model) if args.adapter == 'ollama' and answer['status'] == 'answered'
-                     else scripted(answer))
-        if not validate_narrative(narrative,answer):
-            raise ValueError('narrative validation failed')
-        result = {'answer':answer,'narrative':narrative,'summary':render(answer,narrative)}
-        facts = [f for f in table.facts if f.evidence_id in answer['evidence_ids']]
-        result['supporting_facts'] = [f.model_dump(mode='json') for f in facts]
-        if args.json:
-            print(json.dumps(result,indent=2))
-        else:
-            print(f"Question: {args.question}\nAdapter: {narrative['adapter']} (model: {narrative['model'] or 'none; deterministic'})")
-            print(result['summary'])
-            print(answer['scope_note'])
-            if facts:
-                print('\nEvidence ID | Label | Period | Reported value | Scale | Currency | Scope | Page')
-            for f in facts:
-                print(f'{f.evidence_id} | {f.original_label} | {f.period.label} | {f.reported_value} | {f.scale_multiplier} | {f.currency} | {f.scope} | {f.locator.printed_page}')
-                print(f'Source: {f.source_url}#{f.locator.element_id or ""}')
-                for e in f.excerpts:
-                    print(f'  {e.kind} ({e.where}): {e.text}')
-            if answer['calculation']:
-                print('\nCalculation: '+json.dumps(answer['calculation']))
-        return 0 if answer['status'] == 'answered' else 1
-    except (OSError,ValueError,KeyError,TypeError) as err:
-        # No silent scripted fallback when a requested model fails.
-        print(json.dumps({'status':'unresolved','reason':'input_or_adapter_failure','detail':str(err)}),file=sys.stderr)
+        book = load_factbook(root)
+    except FactBookError as err:
+        print(f"ask stopped: {err}", file=sys.stderr)
         return 2
+    answer = answer_question(args.question, book)
+    text = answer_to_json(answer)
+    if args.out:
+        args.out.write_text(text, encoding="utf-8")
+    print(text, end="")
+    return {"answered": 0, "unresolved": 1, "refused": 5}[answer.status]
+
+
+DEMO_QUESTIONS = (
+    ("lookup", "What was Microsoft's consolidated revenue in FY2024?", "answered"),
+    ("change", "How much did consolidated revenue change from FY2023 to FY2024?", "answered"),
+    ("unsupported forecast", "What will Microsoft's consolidated revenue be in FY2027?", "unresolved"),
+)
+EXIT_BY_STATUS = {"answered": 0, "unresolved": 1, "refused": 5}
+
+
+def _answer_root(root: Path | None) -> Path:
+    """Explicit --root wins. Otherwise the current directory if it holds a fact table, else the bundled example under it."""
+    if root is not None:
+        return root.resolve()
+    cwd = Path.cwd()
+    return cwd if (cwd / "output" / "fact_table.json").exists() else cwd / "examples" / "msft_fy2024"
+
+
+def _load_book(root: Path):
+    # snapshot mode is allowed here only: it is used when the filing bytes are absent, and the answer says so.
+    return load_factbook(root, allow_snapshot=True)
+
+
+def cmd_answer(root: Path | None, args: argparse.Namespace) -> int:
+    """Answer one question and add a SCRIPTED (deterministic, offline) narrative. Not a model."""
+    r = _answer_root(root)
+    try:
+        book = _load_book(r)
+    except FactBookError as err:
+        print(f"answer stopped: {err}", file=sys.stderr)
+        return 2
+    answer = answer_question(args.question, book)
+    narrative = run_narrative(answer, ScriptedAdapter())
+    if args.json:
+        print(json.dumps({"answer": json.loads(answer_to_json(answer)), "narrative": json.loads(narrative.model_dump_json())}, indent=2))
+    else:
+        print(render(answer, narrative), end="")
+    return EXIT_BY_STATUS[answer.status]
+
+
+def cmd_demo(root: Path | None, _args: argparse.Namespace) -> int:
+    """Deterministic offline demo of the three required questions. No network, no model, no credential."""
+    r = _answer_root(root)
+    try:
+        book = _load_book(r)
+    except FactBookError as err:
+        print(f"demo stopped: {err}", file=sys.stderr)
+        return 2
+    ok = True
+    for i, (kind, question, expected) in enumerate(DEMO_QUESTIONS, 1):
+        answer = answer_question(question, book)
+        narrative = run_narrative(answer, ScriptedAdapter())
+        print(f"===== Demo question {i} of {len(DEMO_QUESTIONS)}: {kind} =====")
+        print(render(answer, narrative))
+        if answer.status != expected or (answer.status == "answered" and narrative.status != "validated"):
+            ok = False
+            print(f"DEMO CHECK FAILED: expected status {expected}, got {answer.status} (narrative {narrative.status})", file=sys.stderr)
+    print("demo result:", "all three questions behaved as specified" if ok else "UNEXPECTED RESULT")
+    return 0 if ok else 1
+
+
+def _provider(args: argparse.Namespace):
+    if args.provider == "claude-cli":
+        return ClaudeCliAdapter(model=args.model)
+    return AnthropicApiAdapter(model=args.model)
+
+
+def cmd_live(root: Path | None, args: argparse.Namespace) -> int:
+    """Answer one question, then ask a REAL model to restate the verified answer; the output is accepted only if it passes validation."""
+    r = _answer_root(root)
+    try:
+        book = _load_book(r)
+    except FactBookError as err:
+        print(f"live stopped: {err}", file=sys.stderr)
+        return 2
+    answer = answer_question(args.question, book)
+    adapter = _provider(args)
+    narrative = run_narrative(answer, adapter, max_attempts=args.max_attempts, max_output_tokens=args.max_output_tokens, timeout_seconds=args.timeout)
+    print(render(answer, narrative), end="")
+    if args.record:
+        _write_run_record(args.record, answer_to_json(answer), narrative)
+    if narrative.status == "unavailable":
+        return 7
+    if narrative.status == "rejected":
+        return 8
+    return EXIT_BY_STATUS[answer.status]
+
+
+def _write_run_record(directory: Path, answer_json: str, narrative) -> Path:
+    """Persist what a live run actually did. Contains no credential, environment variable or prompt secret; the prompt is hashed."""
+    directory.mkdir(parents=True, exist_ok=True)
+    now = datetime.now(timezone.utc)
+    record = {"record_version": 1, "recorded_at_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "answer_sha256": hashlib.sha256(answer_json.encode()).hexdigest(),
+              "answer": json.loads(answer_json), "narrative": json.loads(narrative.model_dump_json())}
+    path = directory / f"{now.strftime('%Y%m%dT%H%M%SZ')}-{narrative.adapter}-{narrative.status}-{hashlib.sha256(answer_json.encode()).hexdigest()[:8]}.json"
+    path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    print(f"run record written: {path}", file=sys.stderr)
+    return path
+
+
+def cmd_eval_answers(root: Path | None, args: argparse.Namespace) -> int:
+    """Run the frozen answer cases (evaluation/answer_cases.json under --cases-root) against the fact table under --root.
+    Exit 0 if every case passes, 1 if any fails, 5 if the case file differs from its freeze record, 2 if inputs are missing."""
+    facts_root = _answer_root(root)
+    cases_root = (args.cases_root or Path.cwd()).resolve()
+    try:
+        book = load_factbook(facts_root, allow_snapshot=True)
+        report = evaluate_answers(cases_root, book, _load_snapshot(facts_root))
+    except (FactBookError, FileNotFoundError) as err:
+        print(f"eval-answers stopped: {err}", file=sys.stderr)
+        return 2
+    if args.out:
+        args.out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(render_report(report), end="")
+    if not report["cases"]["matches_freeze_record"]:
+        return 5
+    return 0 if not report["failures"] else 1
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="finreport", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--root", type=Path, default=Path.cwd(), help="project root (default: current directory)")
+    parser.add_argument("--root", type=Path, default=None, help="project root (default: current directory; answer/demo/live fall back to examples/msft_fy2024)")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("init", help="write the pending source manifest")
     fetch = sub.add_parser("fetch", help="download and cache the filing (needs SEC_USER_AGENT)")
@@ -194,14 +299,32 @@ def main(argv: list[str] | None = None) -> int:
     imp.add_argument("--min-bytes", type=int, default=DEFAULT_MIN_BYTES, help=argparse.SUPPRESS)
     sub.add_parser("extract", help="extract facts from the cached filing")
     sub.add_parser("evaluate", help="compare output/fact_table.json to evaluation/expected_facts.json")
-    ask = sub.add_parser('ask',help='answer a bounded historical question with verified evidence')
-    ask.add_argument('question')
-    ask.add_argument('--adapter',choices=['scripted','ollama'],default='scripted')
-    ask.add_argument('--model',default='',help='exact installed Ollama model name; no auto-download')
-    ask.add_argument('--json',action='store_true',help='emit structured answer and complete cited facts')
+    ask = sub.add_parser("ask", help="answer one supported question from the verified fact table (deterministic; no model)")
+    ask.add_argument("question")
+    ask.add_argument("--out", type=Path, default=None, help="also write the JSON answer to this file")
+    ans = sub.add_parser("answer", help="answer a question with a SCRIPTED narrative (offline, deterministic; not a model)")
+    ans.add_argument("question")
+    ans.add_argument("--json", action="store_true", help="print the answer and narrative as JSON")
+    sub.add_parser("demo", help="offline demo: the three required questions, deterministic, no network, no model")
+    live = sub.add_parser("live", help="answer a question and have a REAL model restate it; output is validated (needs a provider)")
+    live.add_argument("question")
+    live.add_argument("--provider", choices=("claude-cli", "anthropic-api"), default="claude-cli")
+    live.add_argument("--model", default=None, help="model id (provider default if omitted)")
+    live.add_argument("--max-attempts", type=int, default=2, help="validated retries, 1..3 (default 2)")
+    live.add_argument("--max-output-tokens", type=int, default=500)
+    live.add_argument("--timeout", type=float, default=90.0, help="seconds per provider call")
+    live.add_argument("--record", type=Path, default=None, help="directory to write a JSON run record into")
+    ev = sub.add_parser("eval-answers", help="run the frozen answer-evaluation cases; dimensions reported separately")
+    ev.add_argument("--cases-root", type=Path, default=None, help="directory holding evaluation/answer_cases.json (default: current directory)")
+    ev.add_argument("--out", type=Path, default=None, help="write the JSON report here")
     args = parser.parse_args(argv)
-    handler = {"init": cmd_init, "fetch": cmd_fetch, "import-file": cmd_import, "extract": cmd_extract, "evaluate": cmd_evaluate,'ask':cmd_ask}[args.command]
-    return handler(args.root.resolve(), args)
+    if args.command == "live":
+        args.max_attempts = max(1, min(3, args.max_attempts))
+    if args.command in ("answer", "demo", "live", "eval-answers"):
+        return {"answer": cmd_answer, "demo": cmd_demo, "live": cmd_live, "eval-answers": cmd_eval_answers}[args.command](args.root, args)
+    root = (args.root or Path.cwd())
+    handler = {"init": cmd_init, "fetch": cmd_fetch, "import-file": cmd_import, "extract": cmd_extract, "evaluate": cmd_evaluate, "ask": cmd_ask}[args.command]
+    return handler(root.resolve(), args)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
   "manifest_version": 1,
-  "status": "imported_offline",
-  "status_detail": "Imported from a locally supplied file; no HTTP response or download time was observed by this tool.",
+  "status": "pending_download",
+  "status_detail": "No download attempted by the tool yet. Requires SEC_USER_AGENT and network access to www.sec.gov.",
   "target": {
     "company": "Microsoft Corporation",
     "cik": "0000789019",
@@ -13,17 +13,6 @@
     "index_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/0000950170-24-087843-index.htm"
   },
   "retrieval": null,
-  "external_import": {
-    "acquisition_method": "User-supplied HTML attachment received in this chat in response to the request for the Microsoft FY2024 SEC filing. The external download method and acquisition time were not independently observed. Bytes are imported unchanged.",
-    "claimed_source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
-    "operator_reported_acquired_at": null,
-    "original_filename": "e5348a13-a403-455c-91ea-847059e58242.tmp",
-    "imported_at_utc": "2026-11-13T18:45:21.344568Z",
-    "cached_filename": "msft-20240630.htm",
-    "byte_count": 6861379,
-    "sha256": "b0f255f67b2c26da21c69e05021ea333f4d42bafd415b153e8835a3ced2967fa",
-    "operator_supplied_sha256_verified": true
-  },
   "amendment_search": {
     "status": "pending",
     "note": "Search for subsequent amendments (10-K/A) has not been performed. Do not claim none exist."
