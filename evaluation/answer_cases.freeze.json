@@ -1,0 +1,8 @@
+{
+  "file": "evaluation/answer_cases.json",
+  "sha256": "a6b9036022d98d17990a9569c844b20f9b5118180388ada35fe836094747ccc2",
+  "cases": 40,
+  "frozen_at_utc": "2026-11-13T19:45:22Z",
+  "rule": "Frozen BEFORE the answer-evaluation harness existed and before any evaluation run. A later change to the case file must be recorded as a new version with a stated reason; the first-run result is kept.",
+  "authorship": "written by the assistant that implemented the answer layer, with the implementation in view; not independent"
+}

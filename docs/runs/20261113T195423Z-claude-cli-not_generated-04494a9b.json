@@ -1,0 +1,46 @@
+{
+  "record_version": 1,
+  "recorded_at_utc": "2026-11-13T19:54:23Z",
+  "answer_sha256": "04494a9b67eb749535da722fe3b918890ff876248f04e878466c20d049b7bf1b",
+  "answer": {
+    "answer_schema_version": 1,
+    "question": "What will Microsoft's consolidated revenue be in FY2027?",
+    "question_kind": "unsupported",
+    "status": "unresolved",
+    "entity": "Microsoft Corporation",
+    "value": null,
+    "evidence": [],
+    "calculation": null,
+    "reason_code": "forecast_not_supported",
+    "reason": "The selected historical filing's evidence covers fiscal years up to FY2024; it does not establish revenue for FY2027. No forecast is made, and no evidence is cited for it.",
+    "limitations": [
+      "Values are as presented in the selected historical 10-K (accession 0000950170-24-087843) for the fiscal year ended 2024-06-30. A search for later amendments (10-K/A) has not been performed, so these are not claimed to be the latest-amended values.",
+      "Consolidated, in USD; each cited fact keeps its own accounting basis and scale."
+    ],
+    "source": {
+      "company": "Microsoft Corporation",
+      "form": "10-K",
+      "accession": "0000950170-24-087843",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+      "fiscal_period_end": "2024-06-30",
+      "checksum": "b0f255f67b2c26da21c69e05021ea333f4d42bafd415b153e8835a3ced2967fa",
+      "source_verified": true,
+      "verification_problems": [],
+      "verification_level": "reviewed_snapshot_fact_table_only"
+    }
+  },
+  "narrative": {
+    "status": "not_generated",
+    "adapter": "claude-cli",
+    "model": null,
+    "attempts": 0,
+    "text": "The selected historical filing's evidence covers fiscal years up to FY2024; it does not establish revenue for FY2027. No forecast is made, and no evidence is cited for it. (reason code: forecast_not_supported)",
+    "claims": [],
+    "violations": [],
+    "earlier_attempt_violation_codes": [],
+    "unavailable_reason": null,
+    "raw_output_excerpt": "",
+    "usage": {},
+    "prompt_sha256": null
+  }
+}

@@ -1,0 +1,14 @@
+Answer evaluation: 40 frozen cases (hash a6b9036022d9..., matches the freeze record)
+Verification level of the evaluated fact table: reviewed_snapshot_fact_table_only
+Scope: One Microsoft FY2024 10-K (accession 0000950170-24-087843); three metrics; FY2024 and FY2023. Results do not generalise beyond these cases.
+Authorship: Written by the AI assistant that also implemented the answer layer, with the implementation in view. Expected values computed with independent Decimal arithmetic (evaluation/make_answer_cases.py). Not independent held-out evidence.
+
+  1_value_correctness                  16/16
+  2_calculation_correctness            8/8
+  3_citation_validity                  40/40
+  4_appropriate_non_answers            24/24
+  5_scripted_narrative_validation      16/16
+  false answers: none; false non-answers: none
+  cases with every applicable check passed: 40/40
+    perturbed_fact_table: 11/11
+    real_fact_table: 29/29

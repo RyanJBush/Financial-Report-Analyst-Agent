@@ -1,0 +1,106 @@
+{
+  "review_version": 1,
+  "reviewer": "the AI assistant that implemented the system (author of the validator). NOT independent.",
+  "method": "Each claim was read against the cited fact's row text, scale line, period header and scope/basis excerpts in examples/msft_fy2024/output/evidence_excerpts.md and against the calculation record. Verdicts: supported / unsupported / partly supported.",
+  "scope": "Only the claims listed here: the live-model runs recorded in docs/runs for the two answerable demo questions, and the scripted templates for the same two questions. 4 live-model claims + 3 scripted claims reviewed. Nothing else was reviewed; this is not a sample of the model's behaviour in general.",
+  "counts": {
+    "claims_reviewed": 7,
+    "supported": 7,
+    "live_model_claims": 4
+  },
+  "entries": [
+    {
+      "source": "live model run",
+      "run_record": "docs/runs/20261113T195418Z-claude-cli-validated-c838ca7c.json",
+      "model": "claude-sonnet-5-5",
+      "claim_index": 0,
+      "claim_text": "Microsoft Corporation's consolidated total revenue in FY2024 was USD 245,122 million under US GAAP.",
+      "claim_sha256": "05bd7a3a8e6984f81de7606f49b93e49740e3ecaf7de77c22b786efd334a0c9a",
+      "cited_evidence_ids": [
+        "REV_2024"
+      ],
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "Amount 245,122 and 'million' match REV_2024 (row 'Total revenue', cell 3, scale line '(In millions...)'); FY2024 matches the column header; 'consolidated' matches the fact's scope; 'under US GAAP' matches the fact's accounting_basis field (basis excerpt: statements prepared in accordance with U.S. GAAP). 'total revenue' is the row's own label. No unsupported claim found."
+    },
+    {
+      "source": "live model run",
+      "run_record": "docs/runs/20261113T195423Z-claude-cli-validated-8438c0e3.json",
+      "model": "claude-sonnet-5-5",
+      "claim_index": 0,
+      "claim_text": "Microsoft Corporation's consolidated total revenue increased by USD 33,207 million from FY2023 to FY2024, a change of 15.67%.",
+      "claim_sha256": "5d21fa30a0998239cabed3b4ab27292237324ee8dbe47d1c4e4f5777c21a4ca7",
+      "cited_evidence_ids": [
+        "REV_2023",
+        "REV_2024"
+      ],
+      "cited_calculation_id": "CALC_1",
+      "manual_verdict": "supported",
+      "manual_note": "33,207 = 245,122 - 211,915 (million); 15.67% = displayed percentage of the calculation record (unrounded 15.66996...); 'increased' agrees with the positive difference; FY2023->FY2024 matches the two cited facts. No unsupported claim found."
+    },
+    {
+      "source": "live model run",
+      "run_record": "docs/runs/20261113T195423Z-claude-cli-validated-8438c0e3.json",
+      "model": "claude-sonnet-5-5",
+      "claim_index": 1,
+      "claim_text": "Total revenue was USD 211,915 million in FY2023.",
+      "claim_sha256": "bdb265b2b60fc0c9942975619ae7615ccc9411edaa3b928d22fc407ace8089d1",
+      "cited_evidence_ids": [
+        "REV_2023"
+      ],
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "211,915 million and FY2023 match REV_2023. No unsupported claim found."
+    },
+    {
+      "source": "live model run",
+      "run_record": "docs/runs/20261113T195423Z-claude-cli-validated-8438c0e3.json",
+      "model": "claude-sonnet-5-5",
+      "claim_index": 2,
+      "claim_text": "Total revenue was USD 245,122 million in FY2024.",
+      "claim_sha256": "fb99f1b819a9eeed87f654f90aba77f286eddc60ec31b6d85265f062cf3e6ef2",
+      "cited_evidence_ids": [
+        "REV_2024"
+      ],
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "245,122 million and FY2024 match REV_2024. No unsupported claim found."
+    },
+    {
+      "source": "scripted template (not a model)",
+      "run_record": null,
+      "model": "scripted-template-v1",
+      "claim_index": 0,
+      "claim_text": "Microsoft Corporation's consolidated revenue for FY2024 was USD 245,122 million.",
+      "claim_sha256": "a2e033a59d04fd9e3b226a4dda94348ff7ada5a6c66e96e215c05d2b993df17f",
+      "cited_evidence_ids": null,
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "Template output; value, year and scope match REV_2024."
+    },
+    {
+      "source": "scripted template (not a model)",
+      "run_record": null,
+      "model": "scripted-template-v1",
+      "claim_index": 0,
+      "claim_text": "Consolidated revenue increased by USD 33,207 million from FY2023 to FY2024.",
+      "claim_sha256": "1b32d0d39adbe0df8d5c1fde01aecf2f6d44d408045cce6bcc4c5236084a9eab",
+      "cited_evidence_ids": null,
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "Template output; values match the calculation record; direction agrees with the sign."
+    },
+    {
+      "source": "scripted template (not a model)",
+      "run_record": null,
+      "model": "scripted-template-v1",
+      "claim_index": 1,
+      "claim_text": "That is an increase of 15.67%.",
+      "claim_sha256": "490f3fd461423b3b86bfe56ec5411f44e37f4414f82fb368ed6e79c367f25385",
+      "cited_evidence_ids": null,
+      "cited_calculation_id": null,
+      "manual_verdict": "supported",
+      "manual_note": "Template output; values match the calculation record; direction agrees with the sign."
+    }
+  ]
+}

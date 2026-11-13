@@ -1,0 +1,668 @@
+{
+  "report_version": 1,
+  "scope": "One Microsoft FY2024 10-K (accession 0000950170-24-087843); three metrics; FY2024 and FY2023. Results do not generalise beyond these cases.",
+  "authorship": "Written by the AI assistant that also implemented the answer layer, with the implementation in view. Expected values computed with independent Decimal arithmetic (evaluation/make_answer_cases.py). Not independent held-out evidence.",
+  "cases": {
+    "cases_sha256": "a6b9036022d98d17990a9569c844b20f9b5118180388ada35fe836094747ccc2",
+    "frozen_sha256": "a6b9036022d98d17990a9569c844b20f9b5118180388ada35fe836094747ccc2",
+    "frozen_at_utc": "2026-11-13T19:45:22Z",
+    "matches_freeze_record": true,
+    "count": 40
+  },
+  "verification_level": "reviewed_snapshot_fact_table_only",
+  "fact_table_source_checksum": "b0f255f67b2c26da21c69e05021ea333f4d42bafd415b153e8835a3ced2967fa",
+  "dimensions": {
+    "1_value_correctness": {
+      "passed": 16,
+      "denominator": 16,
+      "meaning": "expected-answered cases returning exactly the expected value"
+    },
+    "2_calculation_correctness": {
+      "passed": 8,
+      "denominator": 8,
+      "meaning": "change cases answered with correct absolute, direction, percentage/withheld reason and a recomputing record"
+    },
+    "3_citation_validity": {
+      "passed": 40,
+      "denominator": 40,
+      "of_which_answered": {
+        "passed": 16,
+        "denominator": 16
+      },
+      "of_which_non_answers": {
+        "passed": 24,
+        "denominator": 24
+      },
+      "meaning": "answered: exact expected evidence IDs resolving to one matching fact whose row text holds the amount; non-answers: no value, evidence or calculation"
+    },
+    "4_appropriate_non_answers": {
+      "passed": 24,
+      "denominator": 24,
+      "false_answers": [],
+      "false_non_answers": [],
+      "meaning": "expected-unresolved/refused cases returning an allowed status and reason code"
+    },
+    "5_scripted_narrative_validation": {
+      "passed": 16,
+      "denominator": 16,
+      "meaning": "scripted template narrative accepted by the deterministic validator (not a model)"
+    }
+  },
+  "by_group": {
+    "perturbed_fact_table": {
+      "cases": 11,
+      "all_checks_passed": 11
+    },
+    "real_fact_table": {
+      "cases": 29,
+      "all_checks_passed": 29
+    }
+  },
+  "cases_with_all_applicable_checks_passed": {
+    "passed": 40,
+    "denominator": 40
+  },
+  "failures": [],
+  "per_case": [
+    {
+      "id": "L01",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L02",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L03",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L04",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L05",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L06",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L07",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "L08",
+      "group": "real_fact_table",
+      "category": "lookup",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": null,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C01",
+      "group": "real_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "group": "real_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "group": "real_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "group": "real_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "group": "real_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "U01",
+      "group": "real_fact_table",
+      "category": "forecast",
+      "status": "unresolved",
+      "reason_code": "forecast_not_supported",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U02",
+      "group": "real_fact_table",
+      "category": "forecast",
+      "status": "unresolved",
+      "reason_code": "forecast_not_supported",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U03",
+      "group": "real_fact_table",
+      "category": "future_period",
+      "status": "unresolved",
+      "reason_code": "forecast_not_supported",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U04",
+      "group": "real_fact_table",
+      "category": "period_not_extracted",
+      "status": "unresolved",
+      "reason_code": "period_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U05",
+      "group": "real_fact_table",
+      "category": "metric_not_extracted",
+      "status": "unresolved",
+      "reason_code": "metric_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U06",
+      "group": "real_fact_table",
+      "category": "metric_not_extracted",
+      "status": "unresolved",
+      "reason_code": "metric_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U07",
+      "group": "real_fact_table",
+      "category": "other_company",
+      "status": "unresolved",
+      "reason_code": "unsupported_question",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U08",
+      "group": "real_fact_table",
+      "category": "causal_question",
+      "status": "unresolved",
+      "reason_code": "unsupported_question",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U09",
+      "group": "real_fact_table",
+      "category": "outside_supported_grammar",
+      "status": "unresolved",
+      "reason_code": "unsupported_question",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U10",
+      "group": "real_fact_table",
+      "category": "forecast",
+      "status": "unresolved",
+      "reason_code": "forecast_not_supported",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U11",
+      "group": "real_fact_table",
+      "category": "period_not_extracted",
+      "status": "unresolved",
+      "reason_code": "period_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U12",
+      "group": "real_fact_table",
+      "category": "metric_not_extracted",
+      "status": "unresolved",
+      "reason_code": "metric_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U13",
+      "group": "real_fact_table",
+      "category": "segment_question",
+      "status": "unresolved",
+      "reason_code": "metric_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U14",
+      "group": "real_fact_table",
+      "category": "instruction_in_question",
+      "status": "unresolved",
+      "reason_code": "unsupported_question",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U15",
+      "group": "real_fact_table",
+      "category": "forecast",
+      "status": "unresolved",
+      "reason_code": "forecast_not_supported",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "U16",
+      "group": "real_fact_table",
+      "category": "compound_question",
+      "status": "unresolved",
+      "reason_code": "unsupported_question",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P01",
+      "group": "perturbed_fact_table",
+      "category": "source_not_verified",
+      "status": "refused",
+      "reason_code": "source_not_verified",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P02",
+      "group": "perturbed_fact_table",
+      "category": "tampered_value",
+      "status": "refused",
+      "reason_code": "evidence_not_verified",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P03",
+      "group": "perturbed_fact_table",
+      "category": "duplicate_fact",
+      "status": "unresolved",
+      "reason_code": "ambiguous_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P04",
+      "group": "perturbed_fact_table",
+      "category": "fact_checksum_mismatch",
+      "status": "refused",
+      "reason_code": "source_not_verified",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P05",
+      "group": "perturbed_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "P06",
+      "group": "perturbed_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "P07",
+      "group": "perturbed_fact_table",
+      "category": "change",
+      "status": "answered",
+      "reason_code": null,
+      "checks": {
+        "value": true,
+        "calculation": true,
+        "citation": true,
+        "non_answer": null,
+        "narrative": true
+      },
+      "passed": true
+    },
+    {
+      "id": "P08",
+      "group": "perturbed_fact_table",
+      "category": "missing_fact",
+      "status": "unresolved",
+      "reason_code": "period_not_in_evidence",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P09",
+      "group": "perturbed_fact_table",
+      "category": "scope_mismatch",
+      "status": "refused",
+      "reason_code": "evidence_not_verified",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P10",
+      "group": "perturbed_fact_table",
+      "category": "currency_mismatch",
+      "status": "refused",
+      "reason_code": "evidence_not_verified",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    },
+    {
+      "id": "P11",
+      "group": "perturbed_fact_table",
+      "category": "same_period",
+      "status": "refused",
+      "reason_code": "facts_not_comparable",
+      "checks": {
+        "value": null,
+        "calculation": null,
+        "citation": true,
+        "non_answer": true,
+        "narrative": null
+      },
+      "passed": true
+    }
+  ]
+}

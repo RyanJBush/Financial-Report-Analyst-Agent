@@ -1,0 +1,65 @@
+[
+  {
+    "reason": "statement_not_identified",
+    "metric": "revenue",
+    "row_label": "Revenue",
+    "table_index": 13,
+    "row_index": 4,
+    "period_label": null,
+    "raw_amount_text": "Revenue | $245,122 | $211,915 | 16%"
+  },
+  {
+    "reason": "statement_not_identified",
+    "metric": "net_income",
+    "row_label": "Net income",
+    "table_index": 13,
+    "row_index": 7,
+    "period_label": null,
+    "raw_amount_text": "Net income | 88,136 | 72,361 | 22%"
+  },
+  {
+    "reason": "basis_non_gaap_differs_from_gaap",
+    "metric": "net_income",
+    "row_label": "Net income",
+    "table_index": 19,
+    "row_index": 18,
+    "period_label": null,
+    "raw_amount_text": "Net income | $88,136 | $72,361 | 22%"
+  },
+  {
+    "reason": "statement_kind_not_applicable:equity",
+    "metric": "net_income",
+    "row_label": "Net income",
+    "table_index": 28,
+    "row_index": 19,
+    "period_label": null,
+    "raw_amount_text": "Net income | 88,136 | 72,361 | 72,738"
+  },
+  {
+    "reason": "statement_not_identified",
+    "metric": "revenue",
+    "row_label": "Revenue",
+    "table_index": 49,
+    "row_index": 6,
+    "period_label": null,
+    "raw_amount_text": "Revenue | $5,729"
+  },
+  {
+    "reason": "basis_non_gaap_differs_from_gaap",
+    "metric": "revenue",
+    "row_label": "Revenue",
+    "table_index": 50,
+    "row_index": 6,
+    "period_label": null,
+    "raw_amount_text": "Revenue | $247,442 | $219,790"
+  },
+  {
+    "reason": "basis_non_gaap_differs_from_gaap",
+    "metric": "net_income",
+    "row_label": "Net income",
+    "table_index": 50,
+    "row_index": 7,
+    "period_label": null,
+    "raw_amount_text": "Net income | 88,308 | 71,383"
+  }
+]

@@ -1,0 +1,92 @@
+===== Demo question 1 of 3: lookup =====
+Question : What was Microsoft's consolidated revenue in FY2024?
+Status   : answered
+Answer   : Microsoft Corporation's consolidated revenue for FY2024 was USD 245,122 million.
+
+Facts used
+  [REV_2024] Total revenue | FY2024 | 245,122 (x1,000,000) = 245,122,000,000 USD
+      INCOME STATEMENTS, printed page 56; table 24, row 11, cell 3; scope=consolidated; basis=US GAAP; currency evidence=ixbrl_unit_usd
+      row text: Total revenue | 245,122 | 211,915 | 198,270
+      period: (In millions, except per share amounts) / Year Ended June 30, | 2024 | 2023 | 2022
+      scale: (In millions, except per share amounts)
+      scope: INCOME STATEMENTS
+      scope: The consolidated financial statements include the accounts of Microsoft Corporation and its subsidiaries. Intercompany transactions and bala
+      basis: …e MD&A or the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). Financial metrics are calculated based on financial result
+      currency: <xbrli:unit id="U_USD"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+
+Verification: WEAKER: filing bytes not present; fact table matches the recorded hash of the reviewed snapshot
+Source      : Microsoft Corporation 10-K, accession 0000950170-24-087843, source checksum b0f255f67b2c26da...
+
+Narrative (SCRIPTED TEMPLATE - not a model)
+  Microsoft Corporation's consolidated revenue for FY2024 was USD 245,122 million.
+  cited: [REV_2024]
+  attempts: 1
+
+Limitations
+  - Values are as presented in the selected historical 10-K (accession 0000950170-24-087843) for
+    the fiscal year ended 2024-06-30. A search for later amendments (10-K/A) has not been
+    performed, so these are not claimed to be the latest-amended values.
+  - Consolidated, in USD; each cited fact keeps its own accounting basis and scale.
+
+===== Demo question 2 of 3: change =====
+Question : How much did consolidated revenue change from FY2023 to FY2024?
+Status   : answered
+Answer   : Microsoft Corporation's consolidated revenue increased by USD 33,207 million (15.67%) from FY2023 to FY2024.
+
+Facts used
+  [REV_2023] Total revenue | FY2023 | 211,915 (x1,000,000) = 211,915,000,000 USD
+      INCOME STATEMENTS, printed page 56; table 24, row 11, cell 7; scope=consolidated; basis=US GAAP; currency evidence=ixbrl_unit_usd
+      row text: Total revenue | 245,122 | 211,915 | 198,270
+      period: (In millions, except per share amounts) / Year Ended June 30, | 2024 | 2023 | 2022
+      scale: (In millions, except per share amounts)
+      scope: INCOME STATEMENTS
+      scope: The consolidated financial statements include the accounts of Microsoft Corporation and its subsidiaries. Intercompany transactions and bala
+      basis: …e MD&A or the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). Financial metrics are calculated based on financial result
+      currency: <xbrli:unit id="U_USD"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+  [REV_2024] Total revenue | FY2024 | 245,122 (x1,000,000) = 245,122,000,000 USD
+      INCOME STATEMENTS, printed page 56; table 24, row 11, cell 3; scope=consolidated; basis=US GAAP; currency evidence=ixbrl_unit_usd
+      row text: Total revenue | 245,122 | 211,915 | 198,270
+      period: (In millions, except per share amounts) / Year Ended June 30, | 2024 | 2023 | 2022
+      scale: (In millions, except per share amounts)
+      scope: INCOME STATEMENTS
+      scope: The consolidated financial statements include the accounts of Microsoft Corporation and its subsidiaries. Intercompany transactions and bala
+      basis: …e MD&A or the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). Financial metrics are calculated based on financial result
+      currency: <xbrli:unit id="U_USD"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+
+Calculation (Decimal; unrounded intermediate values)
+  absolute_change = current - prior = 245122000000 - 211915000000 = 33207000000
+  percent_change = (current - prior) / prior * 100 = (245122000000 - 211915000000) / 211915000000 * 100 = 15.66996201307127857867541231
+  displayed to two decimal places, ROUND_HALF_UP = 15.67%
+
+Verification: WEAKER: filing bytes not present; fact table matches the recorded hash of the reviewed snapshot
+Source      : Microsoft Corporation 10-K, accession 0000950170-24-087843, source checksum b0f255f67b2c26da...
+
+Narrative (SCRIPTED TEMPLATE - not a model)
+  Consolidated revenue increased by USD 33,207 million from FY2023 to FY2024. That is an increase
+  of 15.67%.
+  cited: [REV_2023, REV_2024, CALC_1]; [CALC_1]
+  attempts: 1
+
+Limitations
+  - Values are as presented in the selected historical 10-K (accession 0000950170-24-087843) for
+    the fiscal year ended 2024-06-30. A search for later amendments (10-K/A) has not been
+    performed, so these are not claimed to be the latest-amended values.
+  - Consolidated, in USD; each cited fact keeps its own accounting basis and scale.
+
+===== Demo question 3 of 3: unsupported forecast =====
+Question : What will Microsoft's consolidated revenue be in FY2027?
+Status   : unresolved (forecast_not_supported)
+Answer   : No answer: The selected historical filing's evidence covers fiscal years up to FY2024; it does not establish revenue for FY2027. No forecast is made, and no evidence is cited for it.
+
+Verification: WEAKER: filing bytes not present; fact table matches the recorded hash of the reviewed snapshot
+Source      : Microsoft Corporation 10-K, accession 0000950170-24-087843, source checksum b0f255f67b2c26da...
+
+Narrative: none generated (there is no verified value to restate; the reason above is the deterministic explanation).
+
+Limitations
+  - Values are as presented in the selected historical 10-K (accession 0000950170-24-087843) for
+    the fiscal year ended 2024-06-30. A search for later amendments (10-K/A) has not been
+    performed, so these are not claimed to be the latest-amended values.
+  - Consolidated, in USD; each cited fact keeps its own accounting basis and scale.
+
+demo result: all three questions behaved as specified

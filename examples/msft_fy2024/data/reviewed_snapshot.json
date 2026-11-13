@@ -1,0 +1,15 @@
+{
+  "snapshot_version": 1,
+  "purpose": "Identifies the reviewed filing snapshot so a clean clone (which does not contain the 6.8 MB filing) can run the offline demo in the explicitly weaker 'reviewed_snapshot_fact_table_only' verification mode.",
+  "company": "Microsoft Corporation",
+  "form": "10-K",
+  "accession": "0000950170-24-087843",
+  "fiscal_period_end": "2024-06-30",
+  "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+  "cached_filename": "msft-20240630.htm",
+  "byte_count": 6861379,
+  "sha256": "b0f255f67b2c26da21c69e05021ea333f4d42bafd415b153e8835a3ced2967fa",
+  "fact_table_sha256": "9732bc41044ce39cc3c9f8405a4206354eb262dad799d59efeac79db946c7069",
+  "provenance": "User-supplied HTML copy; the acquisition method and time were not observed by this project. The SEC filing index lists 6,860,911 bytes for this document; the 468-byte difference is attributed (not proven) to four script/noscript elements. Do not assume a later SEC download has the same bytes.",
+  "amendment_search": "pending: no search for a later 10-K/A has been performed"
+}
