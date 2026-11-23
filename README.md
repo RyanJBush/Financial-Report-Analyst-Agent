@@ -1,6 +1,6 @@
 # Financial Report Analyst Agent
 
-[![CI](https://github.com/RyanJBush/financial-report-analyst-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/RyanJBush/financial-report-analyst-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/workflows/ci.yml)
 
 Independent completion review: [observed results and limitations](docs/INDEPENDENT_REVIEW.md).
 
@@ -30,8 +30,8 @@ and [`examples/msft_fy2024/answers/`](examples/msft_fy2024/answers/).
 Python 3.11+ (developed on 3.13).
 
 ```bash
-git clone https://github.com/RyanJBush/financial-report-analyst-agent.git
-cd financial-report-analyst-agent
+git clone https://github.com/RyanJBush/Financial-Report-Analyst-Agent.git
+cd Financial-Report-Analyst-Agent
 python3 -m venv .venv && . .venv/bin/activate
 pip install -e ".[dev]"
 finreport demo                  # the three questions above, deterministic, scripted narrative
