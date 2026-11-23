@@ -16,7 +16,7 @@ did not change the production implementation, expected facts or frozen 40-case s
 | Separate evaluation dimensions, both modes | Value 16/16; calculation 8/8; citation validity 40/40; appropriate non-answers 24/24; scripted narrative 16/16 |
 | Expected-fact and answer-case hashes | Both matched their frozen records |
 | Recorded live-model outputs | Two records inspected; their four factual claims revalidated with zero violations and manually checked against the cited evidence/calculation |
-| Hosted CI on restored release | [Run 43499833414](https://github.com/RyanJBush/financial-report-analyst-agent/actions/runs/43499833414): both Python 3.11 and 3.13 jobs succeeded |
+| Hosted CI on restored release | [Run 43499833414](https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/runs/43499833414): both Python 3.11 and 3.13 jobs succeeded |
 
 The real-source revenue change was USD 33,207 million and 15.67%, supported by
 `REV_2023` and `REV_2024`, with verification level `cached_source_verified`.
