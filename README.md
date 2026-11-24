@@ -1,5 +1,7 @@
 # Financial Report Analyst Agent
 
+**Evidence-Grounded Financial Analysis with Deterministic Calculations**
+
 [![CI](https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/workflows/ci.yml)
 
 Independent completion review: [observed results and limitations](docs/INDEPENDENT_REVIEW.md).

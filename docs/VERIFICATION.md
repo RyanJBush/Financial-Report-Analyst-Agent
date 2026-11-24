@@ -9,7 +9,7 @@ produced by the AI assistant that wrote the code; it has not been independently 
 
 | Commit | Run | Result |
 |---|---|---|
-| `dcde194929a62dde8b6bc2a5d951979ec6f4af5d` (code and tests identical to every later commit; later commits change documentation only) | https://github.com/RyanJBush/financial-report-analyst-agent/actions/runs/43498103522 | **success**, both matrix jobs (Python 3.11 and 3.13): install, dev tests, regression fixtures, offline demo, frozen answer cases, hash checks |
+| `dcde194929a62dde8b6bc2a5d951979ec6f4af5d` (code and tests identical to every later commit; later commits change documentation only) | https://github.com/RyanJBush/Financial-Report-Analyst-Agent/actions/runs/43498103522 | **success**, both matrix jobs (Python 3.11 and 3.13): install, dev tests, regression fixtures, offline demo, frozen answer cases, hash checks |
 
 The status of the latest commit is shown on the repository's Actions tab. CI uses no network access to SEC and no model access.
 
